@@ -1,0 +1,14 @@
+name: LP
+version: 1.1.9.1
+main: levelpoints.lp.LP
+authors: [Zoon20X]
+description: This is a Leveling Plugin
+website: play.venturescraft.net
+
+softdepend: [PlaceholderAPI]  # This can use placeholder api for some placeholders
+
+commands:
+  lps:
+    usage: /<command>
+  levelpoints:
+    usage: /<command>

@@ -1,0 +1,125 @@
+  #####################################
+  #   takes exp from players when     #
+  #            they place ores        #
+  #####################################
+  Anti-EXP-Dupe: false
+
+
+  #####################################
+  #   Earn EXP When Killing Players   #
+  #####################################
+  Exp-Kill-players: false
+
+  #####################################
+  #   Amount of EXP for player Kill   #
+  #####################################
+  Kill-Player-Amount: 10
+
+  #####################################
+  #      Lose EXP on Player Death     #
+  #####################################
+  EXP-Lost-On-Death-Player: false
+
+  #####################################
+  #       Amount of EXP on Death      #
+  #####################################
+  EXP-Lost-Amount: 0
+
+
+  #####################################
+  #  Earn EXP on Hostile Mobs kill    #
+  #####################################
+  Exp-Kill-Mob: false
+
+
+
+
+  #####################################
+  #            Random EXP             #
+  #####################################
+  # Set this to true for exp to be    #
+  #             random                #
+  # Warning the max is whatever number#
+  # is set as the EXP amount E.G      #
+  # Zombie: 50 == would give a random #
+  # between 0-50 exp                  #
+  #####################################
+  RandomEXP: false
+  #this works for all types of exp as long as they are active
+
+
+#if set to true it will message the player with the name of the mob on kill
+#this is used for adding in more mobs
+# all mobs HAVE to be in full-case as shown below
+  Debug: false
+
+  #####################################
+  #    Amount of EXP for Mob Kill     #
+  #####################################
+  ZOMBIE: 0
+  SKELETON: 0
+  SPIDER: 0
+  CREEPER: 0
+  ENDERMAN: 0
+
+  #####################################
+  #  Earn EXP on Passive Mobs Kill    #
+  #####################################
+  Passive-Mobs: false
+
+  #####################################
+  #     Amount of EXP for Mobs Kill   #
+  #####################################
+  COW: 0
+  PIG: 0
+  CHICKEN: 0
+  RABBIT: 0
+  SHEEP: 0
+
+
+  #####################################
+  #     Earn EXP on Boss Mob Kill     #
+  #####################################
+  Use-Boss-Mobs: false
+
+  #####################################
+  #    Amount of EXP for Boss Kill    #
+  #####################################
+  Enderdragon: 0
+  Wither: 0
+
+  #####################################
+  #        Earn EXP From ORES         #
+  #####################################
+  Resources: true
+
+  #####################################
+  #      Amount of EXP for ORES       #
+  #####################################
+  COAL_ORE: 0
+  IRON_ORE: 0
+  GOLD_ORE: 0
+  LAPIS_ORE: 0
+  REDSTONE_ORE: 0
+  DIAMOND_ORE: 0
+  EMERALD_ORE: 0
+  QUARTZ_ORE: 0
+
+  #####################################
+  #           EXP PER WORLD           #
+  #####################################
+  PerWorld: false
+  Worlds:
+    - world
+
+  #####################################
+  #     Ore Required Level to MINE    #
+  #####################################
+  oSTONE: 0
+  oCOAL_ORE: 0
+  oIRON_ORE: 0
+  oGOLD_ORE: 0
+  oDIAMOND_ORE: 0
+  oEMERALD_ORE: 0
+  oQUARTZ_ORE: 0
+  Use-Booster: false

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="LevelPoints:jar" />
+    </artifacts-to-build>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d7510956-6c72-465e-9e6b-1e334f122a6b" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="ExportToHTMLSettings">
+    <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/../LevelPoints\exportToHTML" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>main</find>
+      <find>sender</find>
+      <find>public</find>
+      <find>player</find>
+      <find>50</find>
+      <find>LEXP* 100</find>
+      <find>100</find>
+      <find>sb</find>
+      <find>BountifulAPI.sendActionBar(player, sb.toString() + &quot; &quot; + ChatColor.AQUA + expsss + &quot;/&quot; + needeps, 100);</find>
+      <find>System.out.println(sb.toString()); //theres your progress bar</find>
+      <find>List&lt;String&gt; cmds = lp.getConfig().getStringList(&quot;Rewards&quot;);</find>
+      <find>int pts</find>
+      <find>.EXP</find>
+      <find>CustomKill</find>
+      <find>Custommining</find>
+      <find>this.getPlayersConfig</find>
+      <find>this.getPlayersFile</find>
+      <find>lp.</find>
+      <find>player.getuu</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>lp</replace>
+      <replace>player</replace>
+      <replace>private</replace>
+      <replace>player.getName()</replace>
+      <replace>LEXP</replace>
+      <replace>(LEXP* 100)</replace>
+      <replace>LPML</replace>
+      <replace>BountifulAPI.sendActionBar(player, sb.toString() + &quot; &quot; + ChatColor.AQUA + expsss + &quot;/&quot; + needeps);</replace>
+      <replace>List&lt;String&gt; cmds = lp.getConfig().getStringList(API.format(&quot;Rewards.Level-&quot; + (level + 1)));</replace>
+      <replace>pts</replace>
+      <replace>.EXP.Amount</replace>
+      <replace>this,</replace>
+      <replace>this.</replace>
+      <replace>lp.CustomXP</replace>
+      <replace>lp.LevelConfig</replace>
+      <replace>lp.getPlayersConfig</replace>
+      <replace>lp.getConfig</replace>
+      <replace>lp.RewardsConfig</replace>
+      <replace>lp.getPlayersFile</replace>
+    </replaceStrings>
+  </component>
+  <component name="ProjectId" id="1Ou7NkViPoCYhUlMYNIr9njY1A6" />
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="true" />
+    <property name="GenerateAntBuildDialog.backupFiles" value="true" />
+    <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
+    <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
+    <property name="GenerateAntBuildDialog.outputFileNameProperty" value="levelpoints" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553901894017" />
+    <property name="last_opened_file_path" value="E:/TitleAPI-1.7.7.jar!/" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Minecraft  Plugins\LevelPoints\src\main\java\levelpoints\lp" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="levelpoints.otherPluginConnections" />
+      <recent name="levelpoints.Events" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\Minecraft  Plugins\LevelPoints\src\main\resources\OtherSettings" />
+      <recent name="G:\Minecraft  Plugins\LevelPoints\src\main\resources" />
+      <recent name="F:\Minecraft  Plugins\LevelPoints\src\main\java\levelpoints\lp" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="LevelPoints build" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="clean" />
+                <option value="package" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d7510956-6c72-465e-9e6b-1e334f122a6b" name="Default Changelist" comment="" />
+      <created>1547373321368</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1547373321368</updated>
+      <workItem from="1564815597353" duration="219000" />
+      <workItem from="1564816009507" duration="655000" />
+      <workItem from="1566335157065" duration="8368000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.facetType" implementationName="minecraft" />
+  </component>
+</project>

@@ -1,0 +1,35 @@
+lp:
+  - '&8------------------'
+  - '&bLevelPoints'
+  - '&b/lps &fDisplays this menu'
+  - '&b/lps reload &fReloads config/players files'
+  - '&b/lps info <player> &fShows level info of a player'
+  - '&b/lps bp &fShows the booster backpack'
+  - '&b/lps prestige &fAllows you to prestige if requirements are met'
+  - '&b/lps booster give <player> <multiplier> &fGives the player a booster'
+  - '&b/lps booster set <multiplier> &fSets the booster of the specified multiplier'
+  - '&b/lps expgive <player> <amount> &fGive experience to a player'
+  - '&b/lps expremove <player> <amount> &fRemove experience from a player'
+  - '&b/lps top &fShows top 10 players'
+  - '&b/lps setlevel <player> <level> &fSets a players level'
+  - '&8------------------'
+
+
+lpinfoName: '&bPlayer&7>&3'
+lpinfoLevel: '&2Level&7>&a'
+lpinfoEXP: '&2EXP&7>&a'
+lpinfoEXPProgress: '&2EXP Progress&7>&a'
+lpinfoPrestige: '&2Prestige&7>&a'
+
+lpreload: '&aLevelPoints Plugin Config/players reloaded'
+
+lpLevelCustomError: '&4Max Level is not set in customLeveling, please set it up to use this feature'
+lpLevelCustomErrorPlayer: '&cPlease Contact the Server Admin about this error, Error-Code: CL-EXP-Max'
+
+lpLevelUpTop: '&2You Leveled Up'
+lpLevelUpBottom: '&bYour Now Level'
+
+lpRewardMessage: '&bYou Have Recieved Leveling Reward'
+
+lpRewardTitleTop: '&bLeveling Reward Received'
+lpRewardTitleBottom: '&8Level Reward: &b'
