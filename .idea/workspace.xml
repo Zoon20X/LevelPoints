@@ -6,13 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7510956-6c72-465e-9e6b-1e334f122a6b" name="Default Changelist" comment="Changed the way the /lps info command receives text, as well as added some new custom placeholders">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/commands/LevelPoints.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/commands/LevelPoints.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/lang.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lang.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/lang.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/lang.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/commands/LevelPoints.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levelpoints/commands/LevelPoints.class" afterDir="false" />
-    </list>
+    <list default="true" id="d7510956-6c72-465e-9e6b-1e334f122a6b" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +97,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553901894017" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
@@ -181,7 +175,7 @@
       <workItem from="1566453534277" duration="125000" />
       <workItem from="1566455190422" duration="1033000" />
       <workItem from="1566465943519" duration="305000" />
-      <workItem from="1566466272892" duration="2596000" />
+      <workItem from="1566466272892" duration="2899000" />
     </task>
     <task id="LOCAL-00001" summary="got rid of un-needed files">
       <created>1566466618431</created>
@@ -190,7 +184,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566466618431</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Changed the way the /lps info command receives text, as well as added some new custom placeholders">
+      <created>1566468893070</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1566468893070</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
