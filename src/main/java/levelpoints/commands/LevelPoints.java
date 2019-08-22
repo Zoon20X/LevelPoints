@@ -306,13 +306,21 @@ public class LevelPoints  implements CommandExecutor {
                         }
                         float percentage = expss * 100;
 
-                        player.sendMessage(API.format(Lang.getString("lpinfoName")) + " "+ player.getName());
-                        player.sendMessage(ChatColor.AQUA + " ");
-                        player.sendMessage(API.format(Lang.getString("lpinfoLevel")) + " " + levels);
-                        player.sendMessage(API.format(Lang.getString("lpinfoEXP")) + " " + Integer.toString(expss) + "/" + Integer.toString(needep));
-                        player.sendMessage(API.format(Lang.getString("lpinfoEXPProgress")) + Math.round(percentage/needep) + "%");
-                        player.sendMessage(ChatColor.DARK_GREEN + "");
-                        player.sendMessage(API.format(Lang.getString("lpinfoPrestige")) + Integer.toString(pres));
+                        String EXP = Integer.toString(expss) + "/" + Integer.toString(needep);
+                        String Percentage = Math.round(percentage/needep) + "%";
+
+                       // player.sendMessage(API.format(Lang.getString("lpinfoName").replace("{lp_player}", player.getName())));
+                        //player.sendMessage(ChatColor.AQUA + " ");
+                        //player.sendMessage(API.format(Lang.getString("lpinfoLevel").replace("{lp_level}", levels)));
+                        //player.sendMessage(API.format(Lang.getString("lpinfoEXP").replace("{lp_xp}", EXP)));
+                       // player.sendMessage(API.format(Lang.getString("lpinfoEXPProgress").replace("{lp_xp_required}", Percentage)));
+                       // player.sendMessage(ChatColor.DARK_GREEN + "");
+                       // player.sendMessage(API.format(Lang.getString("lpinfoPrestige").replace("{lp_prestige}", Integer.toString(pres))));
+
+                        for(String x : Lang.getStringList("lpsInfo")) {
+
+                            sender.sendMessage(API.format(x.replace("{lp_player}", player.getName()).replace("{lp_level}", levels).replace("{lp_xp}", EXP).replace("{lp_progress}", Percentage).replace("{lp_prestige}", Integer.toString(pres))));
+                        }
                         return true;
                     }
 
@@ -334,14 +342,13 @@ public class LevelPoints  implements CommandExecutor {
                         needep = nlevel * LEXP;
                     }
                     float percentage = expss * 100;
+                    String EXP = Integer.toString(expss) + "/" + Integer.toString(needep);
+                    String Percentage = Math.round(percentage/needep) + "%";
 
-                    player.sendMessage(API.format(Lang.getString("lpinfoName")) + " "+ str.toString());
-                    player.sendMessage(ChatColor.AQUA + " ");
-                    player.sendMessage(API.format(Lang.getString("lpinfoLevel")) + " " + levels);
-                    player.sendMessage(API.format(Lang.getString("lpinfoEXP")) + " " + Integer.toString(expss) + "/" + Integer.toString(needep));
-                    player.sendMessage(API.format(Lang.getString("lpinfoEXPProgress")) + Math.round(percentage/needep) + "%");
-                    player.sendMessage(ChatColor.DARK_GREEN + "");
-                    player.sendMessage(API.format(Lang.getString("lpinfoPrestige")) + Integer.toString(pres));
+                    for(String x : Lang.getStringList("lpsInfo")) {
+
+                        sender.sendMessage(API.format(x.replace("{lp_player}", str.toString()).replace("{lp_level}", levels).replace("{lp_xp}", EXP).replace("{lp_progress}", Percentage).replace("{lp_prestige}", Integer.toString(pres))));
+                    }
                     return true;
                 }
             }else{

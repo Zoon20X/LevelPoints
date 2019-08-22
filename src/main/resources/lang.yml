@@ -14,12 +14,13 @@ lp:
   - '&b/lps setlevel <player> <level> &fSets a players level'
   - '&8------------------'
 
+lpsInfo:
+  - '&bPlayer&7> &3{lp_player}'
+  - '&2Level&7> &a{lp_level}'
+  - '&2EXP&7> &a{lp_xp}'
+  - '&2EXP Progress&7> &a{lp_progress}'
+  - '&2Prestige&7> &a{lp_prestige}'
 
-lpinfoName: '&bPlayer&7>&3'
-lpinfoLevel: '&2Level&7>&a'
-lpinfoEXP: '&2EXP&7>&a'
-lpinfoEXPProgress: '&2EXP Progress&7>&a'
-lpinfoPrestige: '&2Prestige&7>&a'
 
 lpreload: '&aLevelPoints Plugin Config/players reloaded'
 
