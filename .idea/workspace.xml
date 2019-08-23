@@ -6,7 +6,26 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7510956-6c72-465e-9e6b-1e334f122a6b" name="Default Changelist" comment="" />
+    <list default="true" id="d7510956-6c72-465e-9e6b-1e334f122a6b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/LevelPoints.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/LevelPointsPlacholders.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/LevelPoints_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/LevelPoints_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LevelPoints.iml" beforeDir="false" afterPath="$PROJECT_DIR$/LevelPoints.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/Events/ChatEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/Events/ChatEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/Events/Placeholders.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/Events/breakEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/Events/breakEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/commands/LevelPoints.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/commands/LevelPoints.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/lp/LP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/lp/LP.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/Events/ChatEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levelpoints/Events/ChatEvent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/Events/Placeholders.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levelpoints/Events/Placeholders.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/Events/breakEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levelpoints/Events/breakEvent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/commands/LevelPoints.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levelpoints/commands/LevelPoints.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/lp/LP$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levelpoints/lp/LP$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/lp/LP$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/lp/LP.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levelpoints/lp/LP.class" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,8 +115,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553901894017" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../LevelPointsPlacholders.jar!/" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
@@ -175,7 +194,17 @@
       <workItem from="1566453534277" duration="125000" />
       <workItem from="1566455190422" duration="1033000" />
       <workItem from="1566465943519" duration="305000" />
-      <workItem from="1566466272892" duration="2899000" />
+      <workItem from="1566466272892" duration="5233000" />
+      <workItem from="1566516987052" duration="4592000" />
+      <workItem from="1566524418644" duration="496000" />
+      <workItem from="1566526206944" duration="82000" />
+      <workItem from="1566526352098" duration="82000" />
+      <workItem from="1566526460611" duration="47000" />
+      <workItem from="1566526534494" duration="94000" />
+      <workItem from="1566526710569" duration="2499000" />
+      <workItem from="1566537729153" duration="106000" />
+      <workItem from="1566537863411" duration="1219000" />
+      <workItem from="1566539096865" duration="2051000" />
     </task>
     <task id="LOCAL-00001" summary="got rid of un-needed files">
       <created>1566466618431</created>
@@ -191,7 +220,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566468893070</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="got rid of un-needed file">
+      <created>1566469280084</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1566469280084</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -216,6 +252,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="got rid of un-needed files" />
     <MESSAGE value="Changed the way the /lps info command receives text, as well as added some new custom placeholders" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed the way the /lps info command receives text, as well as added some new custom placeholders" />
+    <MESSAGE value="got rid of un-needed file" />
+    <option name="LAST_COMMIT_MESSAGE" value="got rid of un-needed file" />
   </component>
 </project>

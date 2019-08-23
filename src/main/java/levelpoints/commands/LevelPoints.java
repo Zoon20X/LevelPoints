@@ -318,8 +318,7 @@ public class LevelPoints  implements CommandExecutor {
                        // player.sendMessage(API.format(Lang.getString("lpinfoPrestige").replace("{lp_prestige}", Integer.toString(pres))));
 
                         for(String x : Lang.getStringList("lpsInfo")) {
-
-                            sender.sendMessage(API.format(x.replace("{lp_player}", player.getName()).replace("{lp_level}", levels).replace("{lp_xp}", EXP).replace("{lp_progress}", Percentage).replace("{lp_prestige}", Integer.toString(pres))));
+                         sender.sendMessage(API.format(x.replace("{lp_player}", player.getName()).replace("{lp_level}", levels).replace("{lp_xp}", EXP).replace("{lp_progress}", Percentage).replace("{lp_prestige}", Integer.toString(pres))));
                         }
                         return true;
                     }

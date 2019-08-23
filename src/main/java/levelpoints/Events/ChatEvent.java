@@ -11,8 +11,6 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.plugin.Plugin;
 
-import java.util.ArrayList;
-
 public class ChatEvent implements Listener {
     private Plugin plugin = LP.getPlugin(LP.class);
     private LP lp = LP.getPlugin(LP.class);

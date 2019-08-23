@@ -32,6 +32,7 @@ import java.util.UUID;
 
 public final class LP extends JavaPlugin implements Listener {
 
+
     private mySQL sql;
     private Connection connection;
     public String host, database, username, password, table;
@@ -117,21 +118,9 @@ public final class LP extends JavaPlugin implements Listener {
         getServer().getConsoleSender().sendMessage(ChatColor.DARK_AQUA + "Enabled");
         getServer().getConsoleSender().sendMessage(ChatColor.AQUA + "=============================");
         versionChecker();
-        placeholder(20);
 
 
 
-    }
-
-    public void placeholder(int seconds){
-        Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
-            public void run() {
-                if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
-                    new Placeholders().register();
-                }
-
-            }
-        }, (seconds * 10));
     }
 
     public void mySQLSetup(){

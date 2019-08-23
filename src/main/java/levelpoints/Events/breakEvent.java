@@ -50,7 +50,7 @@ public class breakEvent implements Listener {
                 player.sendMessage(block.getType().toString());
             }
 
-            if (lp.LevelConfig.getBoolean("PerWorld")) {
+            if (lp.EXPConfig.getBoolean("PerWorld")) {
 
                 List<String> worlds = lp.EXPConfig.getStringList("Worlds");
                 for (String world : worlds)
