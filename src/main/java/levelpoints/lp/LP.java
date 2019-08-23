@@ -8,6 +8,7 @@ import levelpoints.Events.*;
 import levelpoints.commands.LevelPoints;
 import levelpoints.otherPluginConnections.EpicSpawners;
 import levelpoints.otherPluginConnections.WildStacker;
+import lpsapi.lpsapi.LPSAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandExecutor;
@@ -31,7 +32,7 @@ import java.util.Random;
 import java.util.UUID;
 
 public final class LP extends JavaPlugin implements Listener {
-
+    private LPSAPI lpapi = (LPSAPI) Bukkit.getPluginManager().getPlugin("LPSAPI");
 
     private mySQL sql;
     private Connection connection;
@@ -115,7 +116,7 @@ public final class LP extends JavaPlugin implements Listener {
         getServer().getConsoleSender().sendMessage(ChatColor.DARK_AQUA + "Version: " + this.getDescription().getVersion());
         getServer().getConsoleSender().sendMessage(ChatColor.DARK_AQUA + "MC-Compatible: 1.8-1.13");
         getServer().getConsoleSender().sendMessage(ChatColor.DARK_AQUA + "Config-Version: 1.2.2");
-        getServer().getConsoleSender().sendMessage(ChatColor.DARK_AQUA + "Enabled");
+        getServer().getConsoleSender().sendMessage(ChatColor.AQUA + "Enabled");
         getServer().getConsoleSender().sendMessage(ChatColor.AQUA + "=============================");
         versionChecker();
 
@@ -586,6 +587,9 @@ public final class LP extends JavaPlugin implements Listener {
                     TitleAPI.sendTitle(player, 10, LEXP, 10, Lang.getString(API.format("lpRewardTitleTop")), Lang.getString(API.format("lpRewardTitleBottom")) + " " + levels);
                     Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), command.replace("%player%", player.getName()));
                 }
+        }
+        if(lpapi != null){
+            lpapi.LevelUpEventTrigger(player.getPlayer(), levels);
         }
     }
 }

@@ -1,7 +1,7 @@
 <component name="libraryTable">
-  <library name="LevelPointsPlacholders">
+  <library name="LPSAPI">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../LevelPointsPlacholders.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../API/EXPORTS/LPSAPI.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

@@ -7,23 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d7510956-6c72-465e-9e6b-1e334f122a6b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/LevelPoints.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/LevelPointsPlacholders.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/LevelPoints_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/LevelPoints_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/LPSAPI.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/LevelPointsPlacholders.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LevelPoints.iml" beforeDir="false" afterPath="$PROJECT_DIR$/LevelPoints.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/Events/ChatEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/Events/ChatEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/Events/Placeholders.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/Events/breakEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/Events/breakEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/commands/LevelPoints.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/commands/LevelPoints.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/lp/LP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/lp/LP.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/Events/ChatEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levelpoints/Events/ChatEvent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/Events/Placeholders.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levelpoints/Events/Placeholders.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/Events/breakEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levelpoints/Events/breakEvent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/commands/LevelPoints.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levelpoints/commands/LevelPoints.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/Events/Placeholders.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/lp/LP$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levelpoints/lp/LP$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/lp/LP$2.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/lp/LP.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levelpoints/lp/LP.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,6 +24,20 @@
   </component>
   <component name="CodeInsightWorkspaceSettings">
     <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
@@ -48,50 +52,6 @@
         <option value="Class" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>main</find>
-      <find>sender</find>
-      <find>public</find>
-      <find>player</find>
-      <find>50</find>
-      <find>LEXP* 100</find>
-      <find>100</find>
-      <find>sb</find>
-      <find>BountifulAPI.sendActionBar(player, sb.toString() + &quot; &quot; + ChatColor.AQUA + expsss + &quot;/&quot; + needeps, 100);</find>
-      <find>System.out.println(sb.toString()); //theres your progress bar</find>
-      <find>List&lt;String&gt; cmds = lp.getConfig().getStringList(&quot;Rewards&quot;);</find>
-      <find>int pts</find>
-      <find>.EXP</find>
-      <find>CustomKill</find>
-      <find>Custommining</find>
-      <find>this.getPlayersConfig</find>
-      <find>this.getPlayersFile</find>
-      <find>lp.</find>
-      <find>player.getuu</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>lp</replace>
-      <replace>player</replace>
-      <replace>private</replace>
-      <replace>player.getName()</replace>
-      <replace>LEXP</replace>
-      <replace>(LEXP* 100)</replace>
-      <replace>LPML</replace>
-      <replace>BountifulAPI.sendActionBar(player, sb.toString() + &quot; &quot; + ChatColor.AQUA + expsss + &quot;/&quot; + needeps);</replace>
-      <replace>List&lt;String&gt; cmds = lp.getConfig().getStringList(API.format(&quot;Rewards.Level-&quot; + (level + 1)));</replace>
-      <replace>pts</replace>
-      <replace>.EXP.Amount</replace>
-      <replace>this,</replace>
-      <replace>this.</replace>
-      <replace>lp.CustomXP</replace>
-      <replace>lp.LevelConfig</replace>
-      <replace>lp.getPlayersConfig</replace>
-      <replace>lp.getConfig</replace>
-      <replace>lp.RewardsConfig</replace>
-      <replace>lp.getPlayersFile</replace>
-    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -115,26 +75,27 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553901894017" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../LevelPointsPlacholders.jar!/" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../API/EXPORTS/LPSAPI.jar!/" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\Minecraft  Plugins\LevelPoints\src\main\resources\OtherSettings" />
+      <recent name="G:\Minecraft  Plugins\LevelPoints\src\main\resources" />
+      <recent name="F:\Minecraft  Plugins\LevelPoints\src\main\java\levelpoints\lp" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="F:\Minecraft  Plugins\LevelPoints\src\main\java\levelpoints\lp" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="levelpoints.otherPluginConnections" />
       <recent name="levelpoints.Events" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="G:\Minecraft  Plugins\LevelPoints\src\main\resources\OtherSettings" />
-      <recent name="G:\Minecraft  Plugins\LevelPoints\src\main\resources" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Plugins\LevelPoints\src\main\java\levelpoints\APIFILES" />
       <recent name="F:\Minecraft  Plugins\LevelPoints\src\main\java\levelpoints\lp" />
     </key>
   </component>
@@ -204,7 +165,7 @@
       <workItem from="1566526710569" duration="2499000" />
       <workItem from="1566537729153" duration="106000" />
       <workItem from="1566537863411" duration="1219000" />
-      <workItem from="1566539096865" duration="2051000" />
+      <workItem from="1566539096865" duration="11319000" />
     </task>
     <task id="LOCAL-00001" summary="got rid of un-needed files">
       <created>1566466618431</created>
@@ -227,7 +188,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566469280084</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="got rid of un-needed file">
+      <created>1566541461988</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1566541461988</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
