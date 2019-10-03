@@ -105,7 +105,7 @@ public class killEvent implements Listener {
     }
 
     @EventHandler
-    public void onEntityDeath(final EntityDeathEvent event) {
+    public void onEntityDeath(final EntityDeathEvent event) throws IOException {
 
         if (event.getEntity() instanceof Monster) {
             Monster monsterEnt = (Monster) event.getEntity();

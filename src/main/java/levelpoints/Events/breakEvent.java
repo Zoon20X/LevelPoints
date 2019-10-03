@@ -39,7 +39,7 @@ public class breakEvent implements Listener {
     }
 
     @EventHandler
-    public void onBreak(BlockBreakEvent event) {
+    public void onBreak(BlockBreakEvent event) throws IOException {
 
 
         Block block = event.getBlock();

@@ -19,7 +19,6 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Random;
 
 public class LevelPoints  implements CommandExecutor {
     private Plugin plugin = LP.getPlugin(LP.class);
@@ -83,14 +82,6 @@ public class LevelPoints  implements CommandExecutor {
             return true;
         }
 
-        if(args[0].equalsIgnoreCase("apphasaskedforthis")){
-            int max = 1000;
-            int min = 0;
-
-            Random r = new Random();
-            int re = r.nextInt((max - min) + 1) + min;
-            sender.sendMessage(ChatColor.DARK_AQUA + "You Have Consumed " + re + " EXP");
-        }
         if (sender.hasPermission("lp.admin.reload")) {
             if (args[0].equalsIgnoreCase("reload")) {
                 sender.sendMessage(API.format(Lang.getString("lpreload")));
@@ -133,7 +124,11 @@ public class LevelPoints  implements CommandExecutor {
                     Player target = Bukkit.getPlayer(args[1]);
 
                     if (target != null) {
-                        lp.CustomXP(target, Integer.parseInt(args[2]),0);
+                        try {
+                            lp.CustomXP(target, Integer.parseInt(args[2]),0);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }else{
                     player.sendMessage(ChatColor.RED + "You Have Insufficient Permission");
@@ -430,7 +425,11 @@ public class LevelPoints  implements CommandExecutor {
                 Player target = Bukkit.getPlayer(args[1]);
 
                 if (target != null) {
-                    lp.CustomXP(target, Integer.parseInt(args[2]),0);
+                    try {
+                        lp.CustomXP(target, Integer.parseInt(args[2]),0);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
 
