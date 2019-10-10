@@ -8,15 +8,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d7510956-6c72-465e-9e6b-1e334f122a6b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/commands/LevelPoints.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/commands/LevelPoints.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/Events/joinEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/Events/joinEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/lp/LP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/lp/LP.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/commands/LevelPoints$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levelpoints/commands/LevelPoints$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/commands/LevelPoints.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levelpoints/commands/LevelPoints.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/lp/LP.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levelpoints/lp/LP.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plugin.yml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -84,20 +77,20 @@
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="G:\Minecraft  Plugins\LevelPoints\src\main\resources\OtherSettings" />
-      <recent name="G:\Minecraft  Plugins\LevelPoints\src\main\resources" />
-      <recent name="F:\Minecraft  Plugins\LevelPoints\src\main\java\levelpoints\lp" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Plugins\LevelPoints\src\main\java\levelpoints\APIFILES" />
+      <recent name="F:\Minecraft  Plugins\LevelPoints\src\main\java\levelpoints\lp" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="levelpoints.otherPluginConnections" />
       <recent name="levelpoints.Events" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Plugins\LevelPoints\src\main\java\levelpoints\APIFILES" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\Minecraft  Plugins\LevelPoints\src\main\resources\OtherSettings" />
+      <recent name="G:\Minecraft  Plugins\LevelPoints\src\main\resources" />
       <recent name="F:\Minecraft  Plugins\LevelPoints\src\main\java\levelpoints\lp" />
     </key>
   </component>
@@ -184,7 +177,9 @@
       <workItem from="1570000526249" duration="1832000" />
       <workItem from="1570081255567" duration="97000" />
       <workItem from="1570081536607" duration="11000" />
-      <workItem from="1570098762835" duration="298000" />
+      <workItem from="1570098762835" duration="1120000" />
+      <workItem from="1570704440837" duration="509000" />
+      <workItem from="1570740795236" duration="1607000" />
     </task>
     <task id="LOCAL-00001" summary="got rid of un-needed files">
       <created>1566466618431</created>
@@ -221,7 +216,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566557548221</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="fixed some bugs, and slowly working on updates">
+      <created>1570099278182</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1570099278182</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -248,6 +250,7 @@
     <MESSAGE value="Changed the way the /lps info command receives text, as well as added some new custom placeholders" />
     <MESSAGE value="got rid of un-needed file" />
     <MESSAGE value="Deleted Placeholder's from this jar and placed into seperate jar, created a new api, the api will now link to this plugin to track data/events" />
-    <option name="LAST_COMMIT_MESSAGE" value="Deleted Placeholder's from this jar and placed into seperate jar, created a new api, the api will now link to this plugin to track data/events" />
+    <MESSAGE value="fixed some bugs, and slowly working on updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed some bugs, and slowly working on updates" />
   </component>
 </project>

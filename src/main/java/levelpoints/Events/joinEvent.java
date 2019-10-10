@@ -62,9 +62,9 @@ public class joinEvent implements Listener {
             lp.getPlayersConfig().set(player.getName() + ".EXP.GenOn", true);
             lp.getPlayersConfig().save(lp.getPlayersFile());
             if (lp.getConfig().getBoolean("UseSQL")) {
-                lp.update_EXP(player.getUniqueId(), player);
-                lp.update_LEVEL(player.getUniqueId(), player);
-                lp.update_PRESTIGE(player.getUniqueId(), player);
+                lp.getEXP(player.getUniqueId(), player);
+                lp.getLevel(player.getUniqueId(), player);
+                lp.getPrestige(player.getUniqueId(), player);
             }
 
 

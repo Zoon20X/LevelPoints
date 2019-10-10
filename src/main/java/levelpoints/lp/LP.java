@@ -485,6 +485,7 @@ public final class LP extends JavaPlugin implements Listener {
             statement.setString(1, String.valueOf(this.getPlayersConfig().getInt(player.getName() + ".EXP.Amount")));
             statement.setString(2, uuid.toString());
             statement.executeUpdate();
+            getServer().getConsoleSender().sendMessage(ChatColor.DARK_AQUA + "Updated EXP Player in Database");
         } catch (SQLException e) {
             e.printStackTrace();
             getServer().getConsoleSender().sendMessage(ChatColor.DARK_RED + "Couldn't Update SQL Database");
@@ -496,6 +497,7 @@ public final class LP extends JavaPlugin implements Listener {
             statement.setString(1, String.valueOf(this.getPlayersConfig().getInt(player.getName() + ".level")));
             statement.setString(2, uuid.toString());
             statement.executeUpdate();
+            getServer().getConsoleSender().sendMessage(ChatColor.DARK_AQUA + "Updated Level Player in Database");
         } catch (SQLException e) {
             e.printStackTrace();
         }
