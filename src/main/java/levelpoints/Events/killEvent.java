@@ -51,15 +51,13 @@ public class killEvent implements Listener {
                     Player player = (Player) event.getEntity();
                     if ((lp.getPlayersConfig().getInt(player.getName() + ".level") < levelpvp)) {
                         event.setCancelled(true);
-                        TitleAPI.sendTitle(player, 20, 50, 20, ChatColor.DARK_RED + "You Must BE", ChatColor.RED + "Level 5 to PVP");
-                        Attacker.sendMessage(ChatColor.RED + player.getName() + " Must to Level 5 to allow pvp");
-                        Attacker.playSound(Attacker.getLocation(), Sound.ENDERDRAGON_GROWL, 10F, 15);
+                        TitleAPI.sendTitle(player, 20, 50, 20, ChatColor.DARK_RED + "You Must BE", ChatColor.RED + "Level "+levelpvp+" to PVP");
+                        Attacker.sendMessage(ChatColor.RED + player.getName() + " Must to Level "+levelpvp+" to allow pvp");
                     }
                     if ((lp.getPlayersConfig().getInt(Attacker.getName() + ".level") < levelpvp)) {
                         event.setCancelled(true);
-                        TitleAPI.sendTitle(Attacker, 20, 50, 20, ChatColor.DARK_RED + "You Must BE", ChatColor.RED + "Level 5 to PVP");
+                        TitleAPI.sendTitle(Attacker, 20, 50, 20, ChatColor.DARK_RED + "You Must BE", ChatColor.RED + "Level "+ levelpvp +" to PVP");
                         //player.sendMessage(ChatColor.RED + Attacker.getName() + " Must to Level 5 to allow pvp");
-                        player.playSound(player.getLocation(), Sound.ENDERDRAGON_GROWL, 10F, 15);
                     }
                 } else {
                     return;
@@ -73,8 +71,8 @@ public class killEvent implements Listener {
                 Player player = (Player) event.getEntity();
                 if ((lp.getPlayersConfig().getInt(player.getName() + ".level") < levelpvp)) {
                     event.setCancelled(true);
-                    TitleAPI.sendTitle(player, 20, 50, 20, ChatColor.DARK_RED + "You Must BE", ChatColor.RED + "Level 5 to PVP");
-                    Attacker.sendMessage(ChatColor.RED + player.getName() + " Must to Level 5 to allow pvp");
+                    TitleAPI.sendTitle(player, 20, 50, 20, ChatColor.DARK_RED + "You Must BE", ChatColor.RED + "Level "+levelpvp+" to PVP");
+                    Attacker.sendMessage(ChatColor.RED + player.getName() + " Must to Level "+levelpvp+" to allow pvp");
                     Attacker.playSound(Attacker.getLocation(), Sound.ENDERDRAGON_GROWL, 10F, 15);
                 }
             }

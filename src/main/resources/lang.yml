@@ -34,3 +34,5 @@ lpRewardMessage: '&bYou Have Recieved Leveling Reward'
 
 lpRewardTitleTop: '&bLeveling Reward Received'
 lpRewardTitleBottom: '&8Level Reward: &b'
+
+lpPerLevelOre: '&cYou Need To Be {lp_required_level} to mine this block'

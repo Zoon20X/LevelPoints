@@ -1,5 +1,6 @@
 package levelpoints.Events;
 
+import levelpoints.lp.API;
 import levelpoints.lp.LP;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -71,6 +72,8 @@ public class breakEvent implements Listener {
                     }
             } else {
                         if (lp.getPlayersConfig().getInt(player.getName() + ".level") < lp.EXPConfig.getInt("o" + block.getType().toString())) {
+                            int level =  lp.EXPConfig.getInt("o" + block.getType().toString());
+                            player.sendMessage(API.format(lp.LangConfig.getString("lpPerLevelOre").replace("{lp_required_level}", String.valueOf(level))));
                             event.setCancelled(true);
                         } else if (lp.EXPConfig.getBoolean("RandomEXP")) {
 

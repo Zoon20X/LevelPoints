@@ -6,7 +6,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import java.io.IOException;
 
@@ -22,29 +21,6 @@ public class joinEvent implements Listener {
 
     public joinEvent(LP lp) {
 
-    }
-
-    public void doCountDown() {
-        if (pnum > 0) {
-            pnum -= 1;
-            if (lp.getPlayersConfig().getBoolean(playerName + ".EXP.on")) {
-                num = lp.getPlayersConfig().getInt(playerName + ".EXP");
-                ct = lp.getPlayersConfig().getInt(playerName + "EXP.Gen");
-                lp.getServer().getConsoleSender().sendMessage("Hi");
-                lp.getPlayersConfig().set(playerName + ".EXP.Amount", num + ct);
-                try {
-                    lp.getPlayersConfig().save(lp.getPlayersFile());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        doCountDown();
-                    }
-                }.runTaskLater(lp, 20);
-            }
-        }
     }
 
     @EventHandler
