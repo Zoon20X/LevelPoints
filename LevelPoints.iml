@@ -53,5 +53,6 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: me.clip:placeholderapi:2.10.3" level="project" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.39" level="project" />
     <orderEntry type="library" name="LPSAPI" level="project" />
+    <orderEntry type="library" name="BossBarAPI" level="project" />
   </component>
 </module>

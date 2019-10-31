@@ -32,7 +32,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
-public final class LP extends JavaPlugin implements Listener {
+public final class LP extends JavaPlugin implements Listener, LevelPointsData {
     private LPSAPI lpapi = (LPSAPI) Bukkit.getPluginManager().getPlugin("LPSAPI");
 
     private mySQL sql;
@@ -76,6 +76,7 @@ public final class LP extends JavaPlugin implements Listener {
     public FileConfiguration LevelConfig = YamlConfiguration.loadConfiguration(Levelfile);
     File Rewardsfile = new File("plugins/LP/Settings/Rewards.yml");
     public FileConfiguration RewardsConfig = YamlConfiguration.loadConfiguration(Rewardsfile);
+
     @Override
     public void onEnable() {
         getServer().getPluginManager().registerEvents(new joinEvent(this), this);
@@ -98,17 +99,19 @@ public final class LP extends JavaPlugin implements Listener {
             e.printStackTrace();
         }
         this.saveDefaultConfig();
-        if(this.getConfig().getBoolean("EpicSpawners")) {
+        if (this.getConfig().getBoolean("EpicSpawners")) {
             getServer().getPluginManager().registerEvents(new EpicSpawners(this), this);
-        }else if(this.getConfig().getBoolean("WildStacker")) {
+        } else if (this.getConfig().getBoolean("WildStacker")) {
             getServer().getPluginManager().registerEvents(new WildStacker(this), this);
         }
         this.getCommand("levelpoints").setExecutor((CommandExecutor) new LevelPoints(this));
         this.getCommand("lps").setExecutor((CommandExecutor) new LevelPoints(this));
 
-        if(this.getConfig().getBoolean("UseSQL")) {
+        if (this.getConfig().getBoolean("UseSQL")) {
             mySQLSetup();
             getServer().getPluginManager().registerEvents(new mySQL(this), this);
+
+            reconnectSQL();
         }
 
         getServer().getConsoleSender().sendMessage(ChatColor.AQUA + "=============================");
@@ -122,29 +125,33 @@ public final class LP extends JavaPlugin implements Listener {
         versionChecker();
 
 
-
     }
 
-    public void mySQLSetup(){
+    public void mySQLSetup() {
         host = this.getConfig().getString("host");
         port = this.getConfig().getInt("port");
         username = this.getConfig().getString("username");
         database = this.getConfig().getString("database");
         password = this.getConfig().getString("password");
         table = "playerData";
-        try{
-            synchronized (this){
-                if(getConnection() != null && !getConnection().isClosed()){
+
+        try {
+
+            synchronized (this) {
+                if (getConnection() != null && !getConnection().isClosed()) {
+                    if (!getConnection().isClosed()) {
+                        getServer().getConsoleSender().sendMessage(ChatColor.DARK_AQUA + "LevelPoints>> SQLDatabase already Connected :)");
+                    }
                     return;
                 }
                 Class.forName("com.mysql.jdbc.Driver");
-                setConnection(DriverManager.getConnection("jdbc:mysql://" + this.host + ":" + this.port + "/" + this.database,this.username, this.password));
+                setConnection(DriverManager.getConnection("jdbc:mysql://" + this.host + ":" + this.port + "/" + this.database, this.username, this.password));
                 this.getServer().getConsoleSender().sendMessage(ChatColor.DARK_GREEN + "MySQL Connected");
 
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
-        }catch (ClassNotFoundException e){
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
@@ -240,10 +247,10 @@ public final class LP extends JavaPlugin implements Listener {
     }
 
     @EventHandler
-    public void Leave(PlayerQuitEvent event){
+    public void Leave(PlayerQuitEvent event) {
         Player player = event.getPlayer();
 
-        if(this.getConfig().getBoolean("UseSQL")) {
+        if (this.getConfig().getBoolean("UseSQL")) {
             this.update_EXP(player.getUniqueId(), player);
             this.update_LEVEL(player.getUniqueId(), player);
             this.update_PRESTIGE(player.getUniqueId(), player);
@@ -296,6 +303,7 @@ public final class LP extends JavaPlugin implements Listener {
         }
 
     }
+
     public void CustomXP(Player player, int expamount, int left) throws IOException {
         if (player.hasPermission("levelpoints.xp")) {
             int boosteractiive = this.getPlayersConfig().getInt(player.getName() + ".EXP.Active");
@@ -474,12 +482,12 @@ public final class LP extends JavaPlugin implements Listener {
                     lee = 0;
                 }
             }
-        }else{
+        } else {
             return;
         }
     }
 
-    public void update_EXP(UUID uuid, Player player){
+    public void update_EXP(UUID uuid, Player player) {
         try {
             PreparedStatement statement = this.getConnection().prepareStatement("UPDATE " + this.table + " SET EXP=? WHERE UUID=?");
             statement.setString(1, String.valueOf(this.getPlayersConfig().getInt(player.getName() + ".EXP.Amount")));
@@ -491,7 +499,8 @@ public final class LP extends JavaPlugin implements Listener {
             getServer().getConsoleSender().sendMessage(ChatColor.DARK_RED + "Couldn't Update SQL Database");
         }
     }
-    public void update_LEVEL(UUID uuid, Player player){
+
+    public void update_LEVEL(UUID uuid, Player player) {
         try {
             PreparedStatement statement = this.getConnection().prepareStatement("UPDATE " + this.table + " SET LEVEL=? WHERE UUID=?");
             statement.setString(1, String.valueOf(this.getPlayersConfig().getInt(player.getName() + ".level")));
@@ -503,57 +512,60 @@ public final class LP extends JavaPlugin implements Listener {
         }
     }
 
-    public void getEXP(UUID uuid, Player player){
-        try{
+    public void getEXP(UUID uuid, Player player) {
+        try {
             PreparedStatement statement = this.getConnection().prepareStatement("SELECT * FROM " + this.table + " WHERE UUID=?");
             statement.setString(1, uuid.toString());
             ResultSet results = statement.executeQuery();
             results.next();
-            if(statement != null){
+            if (statement != null) {
                 this.getPlayersConfig().set(player.getName() + ".EXP.Amount", results.getInt("EXP"));
             }
             this.getPlayersConfig().save(playersFile);
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    public void getLevel(UUID uuid, Player player){
-        try{
+
+    public void getLevel(UUID uuid, Player player) {
+        try {
             PreparedStatement statement = this.getConnection().prepareStatement("SELECT * FROM " + this.table + " WHERE UUID=?");
             statement.setString(1, uuid.toString());
             ResultSet results = statement.executeQuery();
             results.next();
-            if(statement != null){
+            if (statement != null) {
                 this.getPlayersConfig().set(player.getName() + ".level", results.getInt("LEVEL"));
             }
 
             this.getPlayersConfig().save(playersFile);
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    public void getPrestige(UUID uuid, Player player){
-        try{
+
+    public void getPrestige(UUID uuid, Player player) {
+        try {
             PreparedStatement statement = this.getConnection().prepareStatement("SELECT * FROM " + this.table + " WHERE UUID=?");
             statement.setString(1, uuid.toString());
             ResultSet results = statement.executeQuery();
             results.next();
-            if(statement != null){
+            if (statement != null) {
                 this.getPlayersConfig().set(player.getName() + ".Prestige", results.getInt("PRESTIGE"));
             }
 
             this.getPlayersConfig().save(playersFile);
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    public void update_PRESTIGE(UUID uuid, Player player){
+
+    public void update_PRESTIGE(UUID uuid, Player player) {
         try {
             PreparedStatement statement = this.getConnection().prepareStatement("UPDATE " + this.table + " SET PRESTIGE=? WHERE UUID=?");
             statement.setString(1, String.valueOf(this.getPlayersConfig().getInt(player.getName() + ".Prestige")));
@@ -601,7 +613,7 @@ public final class LP extends JavaPlugin implements Listener {
 
             Random r = new Random();
             int re = r.nextInt((max - min) + 1) + min;
-            List<String> cmds = RewardsConfig.getStringList( "Rewards.Level-" + (level + 1) + "."+ String.valueOf(re));
+            List<String> cmds = RewardsConfig.getStringList("Rewards.Level-" + (level + 1) + "." + String.valueOf(re));
             for (String command : cmds) {
                 if (RewardsConfig.getString("RewardsMethod").equals("NONE")) {
                     Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), command.replace("%player%", player.getName()));
@@ -617,5 +629,51 @@ public final class LP extends JavaPlugin implements Listener {
         //   if(lpapi != null){
         //     lpapi.LevelUpEventTrigger(player.getPlayer(), levels);
         //  }
+    }
+
+    @Override
+    public boolean reconnectSQL() {
+        int delay = this.getConfig().getInt("ReconnectSQL");
+
+        Bukkit.getScheduler().runTaskTimer(this,
+                new Runnable() {
+                    public void run() {
+                        getServer().getConsoleSender().sendMessage(ChatColor.DARK_AQUA + "LevelPoints>> Checking If Connection To The SQLDatabase Is Active");
+
+                        mySQLSetup();
+
+                    }
+                }, 0L, 1200L * delay);
+        return false;
+    }
+
+    public void updateSQL() {
+        int delay = 5;
+
+        Bukkit.getScheduler().runTaskTimer(this,
+                new Runnable() {
+                    public void run() {
+                        getServer().getConsoleSender().sendMessage(ChatColor.DARK_AQUA + "LevelPoints>> Updating SQL Database");
+                        for(Player player : Bukkit.getOnlinePlayers()) {
+                            if (reconnectSQL()) {
+                                SQLQuery(player);
+                            }
+                        }
+                    }
+                }, 0L, 1200L * delay);
+    }
+
+    @Override
+    public boolean SQLQuery(Player player) {
+        boolean updated;
+        if (this.getConfig().getBoolean("UseSQL")) {
+            this.update_EXP(player.getUniqueId(), player);
+            this.update_LEVEL(player.getUniqueId(), player);
+            this.update_PRESTIGE(player.getUniqueId(), player);
+            updated = true;
+        }else{
+            updated = false;
+        }
+        return updated;
     }
 }

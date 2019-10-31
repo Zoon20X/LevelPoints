@@ -7,14 +7,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d7510956-6c72-465e-9e6b-1e334f122a6b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/BossBarAPI.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/levelpoints/Events/LevelPointsData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/Events/breakEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/Events/breakEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LevelPoints.iml" beforeDir="false" afterPath="$PROJECT_DIR$/LevelPoints.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/Events/joinEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/Events/joinEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/Events/killEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/Events/killEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/lang.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lang.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/lp/LP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/lp/LP.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/Events/joinEvent$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/lang.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/lang.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/Events/joinEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levelpoints/Events/joinEvent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/lp/LP$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levelpoints/lp/LP$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/lp/LP.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levelpoints/lp/LP.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plugin.yml" afterDir="false" />
     </list>
@@ -50,8 +54,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="AnnotationType" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -77,13 +82,17 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553901894017" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../1.14/LevelPoints" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="levelpoints.otherPluginConnections" />
+      <recent name="levelpoints.Events" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
     </key>
@@ -91,9 +100,8 @@
       <recent name="D:\Plugins\LevelPoints\src\main\java\levelpoints\APIFILES" />
       <recent name="F:\Minecraft  Plugins\LevelPoints\src\main\java\levelpoints\lp" />
     </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="levelpoints.otherPluginConnections" />
-      <recent name="levelpoints.Events" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="levelpoints.utils" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="G:\Minecraft  Plugins\LevelPoints\src\main\resources\OtherSettings" />
@@ -188,7 +196,13 @@
       <workItem from="1570704440837" duration="509000" />
       <workItem from="1570740795236" duration="2002000" />
       <workItem from="1570776843300" duration="3152000" />
-      <workItem from="1570859365215" duration="3768000" />
+      <workItem from="1570859365215" duration="6089000" />
+      <workItem from="1570924545138" duration="639000" />
+      <workItem from="1571893673793" duration="1081000" />
+      <workItem from="1572245272253" duration="3723000" />
+      <workItem from="1572508165379" duration="221000" />
+      <workItem from="1572508542397" duration="2515000" />
+      <workItem from="1572517512406" duration="841000" />
     </task>
     <task id="LOCAL-00001" summary="got rid of un-needed files">
       <created>1566466618431</created>
@@ -239,7 +253,14 @@
       <option name="project" value="LOCAL" />
       <updated>1570742584458</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added another lang message, it sends a message to the player for perlevelingores">
+      <created>1570872436797</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1570872436797</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -268,6 +289,7 @@
     <MESSAGE value="Deleted Placeholder's from this jar and placed into seperate jar, created a new api, the api will now link to this plugin to track data/events" />
     <MESSAGE value="fixed some bugs, and slowly working on updates" />
     <MESSAGE value="Fixed bugs, now a stable dev build, last dev build before next update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed bugs, now a stable dev build, last dev build before next update" />
+    <MESSAGE value="Added another lang message, it sends a message to the player for perlevelingores" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added another lang message, it sends a message to the player for perlevelingores" />
   </component>
 </project>

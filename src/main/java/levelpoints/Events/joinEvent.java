@@ -35,6 +35,8 @@ public class joinEvent implements Listener {
 
 
         if (lp.getPlayersConfig().contains(player.getName())) {
+
+
             lp.getPlayersConfig().set(player.getName() + ".EXP.GenOn", true);
             lp.getPlayersConfig().save(lp.getPlayersFile());
             if (lp.getConfig().getBoolean("UseSQL")) {
@@ -42,6 +44,8 @@ public class joinEvent implements Listener {
                 lp.getLevel(player.getUniqueId(), player);
                 lp.getPrestige(player.getUniqueId(), player);
             }
+
+            //Create a new BossBar
 
 
 
