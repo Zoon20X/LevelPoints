@@ -6,40 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7510956-6c72-465e-9e6b-1e334f122a6b" name="Default Changelist" comment="Fixed issue with SQL getting ready for 1.1.9.6 update">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_bstats_bstats_bukkit_1_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/levelpoints/lp/MetricsLite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/ActionBarAPI_1_5_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_2_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_8_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_17_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_21_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_persistence_persistence_api_1_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_md_5_bungeecord_chat_1_8_SNAPSHOT.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_md_5_bungeecord_chat_1_12_SNAPSHOT.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_avaje_ebean_2_8_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_spigotmc_spigot_api_1_8_8_R0_1_SNAPSHOT.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_spigotmc_spigot_api_1_12_2_R0_1_SNAPSHOT.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_1_15.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_1_19.xml" afterDir="false" />
+    <list default="true" id="d7510956-6c72-465e-9e6b-1e334f122a6b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LevelPoints.iml" beforeDir="false" afterPath="$PROJECT_DIR$/LevelPoints.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/Events/ChatEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/Events/ChatEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/Events/LevelPointsData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/Events/LevelPointsData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/Events/joinEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/Events/joinEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/Events/killEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/Events/killEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/commands/LevelPoints.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/commands/LevelPoints.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/lp/LP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/lp/LP.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Settings/EXP.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Settings/EXP.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/lang.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lang.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Settings/EXP.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Settings/EXP.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/lang.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/lang.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/Events/ChatEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levelpoints/Events/ChatEvent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/Events/joinEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levelpoints/Events/joinEvent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/commands/LevelPoints.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levelpoints/commands/LevelPoints.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/lp/LP$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levelpoints/lp/LP$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/lp/LP.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levelpoints/lp/LP.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plugin.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -250,7 +219,7 @@
       <workItem from="1576582153002" duration="1508000" />
       <workItem from="1576671441317" duration="507000" />
       <workItem from="1576704971207" duration="4021000" />
-      <workItem from="1576744656283" duration="8246000" />
+      <workItem from="1576744656283" duration="8828000" />
     </task>
     <task id="LOCAL-00001" summary="got rid of un-needed files">
       <created>1566466618431</created>
@@ -315,7 +284,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572518410357</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Changed some code and added a lot of features ready for the next update">
+      <created>1576752947489</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1576752947490</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -346,7 +322,8 @@
     <MESSAGE value="Fixed bugs, now a stable dev build, last dev build before next update" />
     <MESSAGE value="Added another lang message, it sends a message to the player for perlevelingores" />
     <MESSAGE value="Fixed issue with SQL getting ready for 1.1.9.6 update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed issue with SQL getting ready for 1.1.9.6 update" />
+    <MESSAGE value="Changed some code and added a lot of features ready for the next update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed some code and added a lot of features ready for the next update" />
   </component>
   <component name="WindowStateProjectService">
     <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1576748946509">
@@ -354,6 +331,10 @@
     </state>
     <state x="-1155" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1576582357880" />
     <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1576748946509" />
+    <state x="351" y="114" key="CommitChangelistDialog2" timestamp="1576752945099">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="351" y="114" key="CommitChangelistDialog2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1576752945099" />
     <state x="843" y="254" key="FileChooserDialogImpl" timestamp="1576749239358">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -362,5 +343,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="440" y="94" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1576749246304" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1576752955343">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1576752955343" />
   </component>
 </project>

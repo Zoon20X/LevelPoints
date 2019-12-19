@@ -219,28 +219,30 @@ public class LevelPoints  implements CommandExecutor {
                     customInventory i = new customInventory();
                     i.boosterInventory(player);
                 }
-                posTop = 0;
+                if(args[0].equalsIgnoreCase("top")) {
+                    posTop = 0;
 
-                ConfigurationSection cf = lp.getPlayersConfig().getConfigurationSection("");
-                cf.getValues(false)
-                        .entrySet()
-                        .stream()
-                        .sorted((a1, a2) -> {
-                            int points1 = ((MemorySection) a1.getValue()).getInt("level");
-                            int points2 = ((MemorySection) a2.getValue()).getInt("level");
-                            return points2 - points1;
-                        })
-                        .limit(10) // Limit the number of 'results'
-                        .forEach(f -> {
-                            posTop += 1;
+                    ConfigurationSection cf = lp.getPlayersConfig().getConfigurationSection("");
+                    cf.getValues(false)
+                            .entrySet()
+                            .stream()
+                            .sorted((a1, a2) -> {
+                                int points1 = ((MemorySection) a1.getValue()).getInt("level");
+                                int points2 = ((MemorySection) a2.getValue()).getInt("level");
+                                return points2 - points1;
+                            })
+                            .limit(10) // Limit the number of 'results'
+                            .forEach(f -> {
+                                posTop += 1;
 
-                            int points = ((MemorySection) f.getValue()).getInt("level");
-                            for (String x : lp.LangConfig.getStringList("lpsTopList")) {
-                                sender.sendMessage(API.format(x).replace("{LP_Ranked}", Integer.toString(posTop)).replace("{LP_Player}", f.getKey()).replace("{LP_LEVEL}", Integer.toString(points)));
-                                // Here you can send to player or do whatever you wan't.
+                                int points = ((MemorySection) f.getValue()).getInt("level");
+                                for (String x : lp.LangConfig.getStringList("lpsTopList")) {
+                                    sender.sendMessage(API.format(x).replace("{LP_Ranked}", Integer.toString(posTop)).replace("{LP_Player}", f.getKey()).replace("{LP_LEVEL}", Integer.toString(points)));
+                                    // Here you can send to player or do whatever you wan't.
 
-                            }
-                        });
+                                }
+                            });
+                }
             }
 
             if (args[0].equalsIgnoreCase("booster")) {
