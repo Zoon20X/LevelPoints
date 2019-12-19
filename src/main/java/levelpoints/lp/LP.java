@@ -2,13 +2,14 @@ package levelpoints.lp;
 
 
 import com.Zrips.CMI.CMI;
-import com.connorlinfoot.actionbarapi.ActionBarAPI;
 import com.connorlinfoot.titleapi.TitleAPI;
 import levelpoints.Events.*;
 import levelpoints.commands.LevelPoints;
 import levelpoints.otherPluginConnections.EpicSpawners;
 import levelpoints.otherPluginConnections.WildStacker;
 import lpsapi.lpsapi.LPSAPI;
+import net.md_5.bungee.api.ChatMessageType;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandExecutor;
@@ -113,6 +114,7 @@ public final class LP extends JavaPlugin implements Listener, LevelPointsData {
 
             reconnectSQL();
         }
+        MetricsLite metrics = new MetricsLite(this);
 
         getServer().getConsoleSender().sendMessage(ChatColor.AQUA + "=============================");
         getServer().getConsoleSender().sendMessage(ChatColor.DARK_AQUA + "LevelPoints Plugin");
@@ -123,6 +125,25 @@ public final class LP extends JavaPlugin implements Listener, LevelPointsData {
         getServer().getConsoleSender().sendMessage(ChatColor.AQUA + "Enabled");
         getServer().getConsoleSender().sendMessage(ChatColor.AQUA + "=============================");
         versionChecker();
+
+        playersFile = new File(getDataFolder(), "players.yml");
+        boosterFile = new File(getDataFolder(), "Boosters.yml");
+        LangFile = new File(getDataFolder(), "Lang.yml");
+        EXPFile = new File(getDataFolder(), "/Settings/EXP.yml");
+        ESFile = new File(getDataFolder(), "/OtherSettings/EpicSpawners.yml");
+        WSFile = new File(getDataFolder(), "/OtherSettings/WildStacker.yml");
+        RewardsFile = new File(getDataFolder(), "/Settings/Rewards.yml");
+        LevelFile = new File(getDataFolder(), "/Settings/Levels.yml");
+        boosterConfig = YamlConfiguration.loadConfiguration(boosterFile);
+        playersConfig = YamlConfiguration.loadConfiguration(playersFile);
+        LangConfig = YamlConfiguration.loadConfiguration(LangFile);
+        EXPConfig = YamlConfiguration.loadConfiguration(EXPFile);
+        LevelConfig = YamlConfiguration.loadConfiguration(LevelFile);
+        RewardsConfig = YamlConfiguration.loadConfiguration(RewardsFile);
+        ESConfig = YamlConfiguration.loadConfiguration(ESFile);
+        WSConfig = YamlConfiguration.loadConfiguration(WSFile);
+        reloadConfig();
+        TimedEXP();
 
 
     }
@@ -258,232 +279,171 @@ public final class LP extends JavaPlugin implements Listener, LevelPointsData {
     }
 
     public void saveFiles() {
-        if (LangFile == null) {
-            LangFile = new File("plugins/LP/lang.yml");
-            LangConfig = YamlConfiguration.loadConfiguration(LangFile);
-        }
-        if (!LangFile.exists()) {
-            this.saveResource("lang.yml", false);
-        }
-        if (ESFile == null) {
-            ESFile = new File("plugins/LP/OtherSettings/EpicSpawners.yml");
-            ESConfig = YamlConfiguration.loadConfiguration(ESFile);
-        }
-        if (!ESFile.exists()) {
-            this.saveResource("OtherSettings/EpicSpawners.yml", false);
-        }
-        if (EXPFile == null) {
-            EXPFile = new File("plugins/LP/Settings/EXP.yml");
-            EXPConfig = YamlConfiguration.loadConfiguration(EXPFile);
-        }
-        if (!EXPFile.exists()) {
-            this.saveResource("Settings/EXP.yml", false);
-        }
-        if (LevelFile == null) {
-            LevelFile = new File("plugins/LP/Settings/Levels.yml");
-            LevelConfig = YamlConfiguration.loadConfiguration(LevelFile);
-        }
-        if (!LevelFile.exists()) {
-            this.saveResource("Settings/Levels.yml", false);
-        }
-
-        if (RewardsFile == null) {
-            RewardsFile = new File("plugins/LP/Settings/Rewards.yml");
-            RewardsConfig = YamlConfiguration.loadConfiguration(RewardsFile);
-        }
-        if (!RewardsFile.exists()) {
-            this.saveResource("Settings/Rewards.yml", false);
-        }
-        if (WSFile == null) {
-            WSFile = new File("plugins/LP/OtherSettings/WildStacker.yml");
-            WSConfig = YamlConfiguration.loadConfiguration(WSFile);
-        }
-        if (!WSFile.exists()) {
-            this.saveResource("OtherSettings/WildStacker.yml", false);
-        }
+        SaveLoadFiles(LangFile, LangConfig, "plugins/LP/lang.yml", "lang.yml", "Lang");
+        SaveLoadFiles(ESFile, ESConfig, "plugins/LP/OtherSettings/EpicSpawners.yml", "OtherSettings/EpicSpawners.yml", "EpicSpawners");
+        SaveLoadFiles(EXPFile, EXPConfig, "plugins/LP/Settings/EXP.yml", "Settings/EXP.yml", "EXP");
+        SaveLoadFiles(LevelFile, LevelConfig, "plugins/LP/Settings/Levels.yml", "Settings/Levels.yml", "Levels");
+        SaveLoadFiles(RewardsFile, RewardsConfig, "plugins/LP/Settings/Rewards.yml", "Settings/Rewards.yml", "Rewards");
+        SaveLoadFiles(WSFile, WSConfig, "plugins/LP/OtherSettings/WildStacker.yml", "OtherSettings/WildStacker.yml", "WildStacker");
 
     }
 
     public void CustomXP(Player player, int expamount, int left) throws IOException {
-        if (player.hasPermission("levelpoints.xp")) {
-            int boosteractiive = this.getPlayersConfig().getInt(player.getName() + ".EXP.Active");
-            if (LevelConfig.getBoolean("PrestigeLeveling")) {
-                LEXP = LevelConfig.getInt("Prestige-" + this.getPlayersConfig().getInt(player.getName() + ".Prestige") + ".Level-" + this.getPlayersConfig().getInt(player.getName() + ".level"));
-            } else {
-                if (LevelConfig.getBoolean("CustomLeveling")) {
-                    LEXP = LevelConfig.getInt("Level-" + this.getPlayersConfig().getInt(player.getName() + ".level"));
+        int boosteractiive = this.getPlayersConfig().getInt(player.getName() + ".EXP.Active");
+        if (LevelConfig.getBoolean("PrestigeLeveling")) {
+            LEXP = LevelConfig.getInt("Prestige-" + this.getPlayersConfig().getInt(player.getName() + ".Prestige") + ".Level-" + this.getPlayersConfig().getInt(player.getName() + ".level"));
+        } else {
+            if (LevelConfig.getBoolean("CustomLeveling")) {
+                LEXP = LevelConfig.getInt("Level-" + this.getPlayersConfig().getInt(player.getName() + ".level"));
 
+            } else {
+                LEXP = LevelConfig.getInt("LevelingEXP");
+            }
+        }
+        LPML = LevelConfig.getInt("MaxLevel");
+        if (this.EXPConfig.getBoolean("Use-Booster")) {
+            int ps = expamount;
+            pts = ps * boosteractiive;
+        } else {
+            pts = expamount;
+        }
+        int CustomMaxEXP = LevelConfig.getInt("Level-" + LevelConfig.getInt("MaxLevel"));
+        int PrestigeMaxEXP = LevelConfig.getInt("Prestige-" + this.getPlayersConfig().getInt(player.getName() + ".Prestige") + ".Level-" + LevelConfig.getInt("MaxLevel"));
+        number = pts;
+        if (left == 0) {
+            exp = this.getPlayersConfig().getInt(player.getName() + ".EXP.Amount") + number;
+        } else {
+            exp = left;
+        }
+        if (LevelConfig.getBoolean("PrestigeLeveling")) {
+            if (PrestigeMaxEXP == 0) {
+                if (player.hasPermission("lp.admin")) {
+                    player.sendMessage(API.format(Lang.getString("lpLevelCustomError")));
                 } else {
-                    LEXP = LevelConfig.getInt("LevelingEXP");
-                }
-            }
-            LPML = LevelConfig.getInt("MaxLevel");
-            if (this.EXPConfig.getBoolean("Use-Booster")) {
-                int ps = expamount;
-                pts = ps * boosteractiive;
-            } else {
-                pts = expamount;
-            }
-            int CustomMaxEXP = LevelConfig.getInt("Level-" + LevelConfig.getInt("MaxLevel"));
-            int PrestigeMaxEXP = LevelConfig.getInt("Prestige-" + this.getPlayersConfig().getInt(player.getName() + ".Prestige") + ".Level-" + LevelConfig.getInt("MaxLevel"));
-            number = pts;
-            if (left == 0) {
-                exp = this.getPlayersConfig().getInt(player.getName() + ".EXP.Amount") + number;
-            } else {
-                exp = left;
-            }
-            if (LevelConfig.getBoolean("PrestigeLeveling")) {
-                if (PrestigeMaxEXP == 0) {
-                    if (player.hasPermission("lp.admin")) {
-                        player.sendMessage(API.format(Lang.getString("lpLevelCustomError")));
-                    } else {
-                        player.sendMessage(API.format(Lang.getString("lpLevelCustomErrorPlayer")));
+                    player.sendMessage(API.format(Lang.getString("lpLevelCustomErrorPlayer")));
 
-                    }
                 }
-                if (this.getPlayersConfig().getInt(player.getName() + ".EXP.Amount") >= PrestigeMaxEXP) {
-                    return;
+            }
+            if (this.getPlayersConfig().getInt(player.getName() + ".EXP.Amount") >= PrestigeMaxEXP) {
+                return;
+            } else {
+                this.getPlayersConfig().set(player.getName() + ".EXP.Amount", exp);
+                this.getPlayersConfig().save(this.playersFile);
+            }
+        } else if (LevelConfig.getBoolean("CustomLeveling")) {
+            if (CustomMaxEXP == 0) {
+                if (player.hasPermission("lp.admin")) {
+                    player.sendMessage(API.format(Lang.getString("lpLevelCustomError")));
                 } else {
-                    this.getPlayersConfig().set(player.getName() + ".EXP.Amount", exp);
-                    this.getPlayersConfig().save(this.playersFile);
-                }
-            } else if (LevelConfig.getBoolean("CustomLeveling")) {
-                if (CustomMaxEXP == 0) {
-                    if (player.hasPermission("lp.admin")) {
-                        player.sendMessage(API.format(Lang.getString("lpLevelCustomError")));
-                    } else {
-                        player.sendMessage(API.format(Lang.getString("lpLevelCustomErrorPlayer")));
+                    player.sendMessage(API.format(Lang.getString("lpLevelCustomErrorPlayer")));
 
-                    }
                 }
-                if (this.getPlayersConfig().getInt(player.getName() + ".EXP.Amount") >= CustomMaxEXP) {
-                    return;
-                } else {
-                    this.getPlayersConfig().set(player.getName() + ".EXP.Amount", exp);
-                    this.getPlayersConfig().save(this.playersFile);
-                }
+            }
+            if (this.getPlayersConfig().getInt(player.getName() + ".EXP.Amount") >= CustomMaxEXP) {
+                return;
             } else {
-                if (this.getPlayersConfig().getInt(player.getName() + ".EXP.Amount") >= (LEXP * LPML)) {
-                    return;
-                } else {
-                    this.getPlayersConfig().set(player.getName() + ".EXP.Amount", exp);
-                    this.getPlayersConfig().save(this.playersFile);
-                }
-            }
-
-            level = this.getPlayersConfig().getInt(player.getName() + ".level");
-            exp = this.getPlayersConfig().getInt(player.getName() + ".EXP.Amount");
-            int levels = level + 1;
-            if (LevelConfig.getBoolean("PrestigeLeveling")) {
-                take = LEXP;
-            } else if (LevelConfig.getBoolean("CustomLeveling")) {
-                take = LEXP;
-            } else {
-                take = level * LEXP;
-            }
-
-            leftover = exp - take;
-            if (LevelConfig.getBoolean("PrestigeLeveling")) {
-                if (getPlayersConfig().getInt(player.getName() + ".EXP.Amount") >= this.LEXP) {
-
-                    getPlayersConfig().set(player.getName() + ".level", Integer.valueOf(this.level + 1));
-                    getPlayersConfig().set(player.getName() + ".EXP.Amount", Integer.valueOf(this.leftover));
-                    this.getPlayersConfig().save(this.playersFile);
-                    LevelUp(player, 0, level);
-                }
-            } else if (LevelConfig.getBoolean("CustomLeveling")) {
-                if (getPlayersConfig().getInt(player.getName() + ".EXP.Amount") >= this.LEXP) {
-
-                    getPlayersConfig().set(player.getName() + ".level", Integer.valueOf(this.level + 1));
-                    getPlayersConfig().set(player.getName() + ".EXP.Amount", Integer.valueOf(this.leftover));
-                    this.getPlayersConfig().save(this.playersFile);
-                    LevelUp(player, 0, level);
-                }
-            } else {
-                if (getPlayersConfig().getInt(player.getName() + ".EXP.Amount") >= this.LEXP * this.level) {
-
-                    getPlayersConfig().set(player.getName() + ".level", Integer.valueOf(this.level + 1));
-                    getPlayersConfig().set(player.getName() + ".EXP.Amount", Integer.valueOf(this.leftover));
-                    this.getPlayersConfig().save(this.playersFile);
-                    LevelUp(player, 0, level);
-                }
-            }
-            if (this.getPlayersConfig().getInt(player.getName() + ".level") == LPML) {
-
-                if (this.getPlayersConfig().getInt(player.getName() + ".EXP.Amount") >= (LEXP * LPML)) {
-                    player.sendMessage(ChatColor.DARK_GREEN + "You Have All The EXP You Need To Prestige.");
-                    player.sendMessage(ChatColor.DARK_GREEN + " ");
-                    player.sendMessage(ChatColor.DARK_GREEN + "Make Sure All Other Quests Are Completed before Prestiging.");
-                }
-            }
-
-            int nlevelss = this.getPlayersConfig().getInt(player.getName() + ".level");
-            String expsss = this.getPlayersConfig().getString(player.getName() + ".EXP.Amount");
-            exps = this.getPlayersConfig().getInt(player.getName() + ".EXP.Amount");
-            if (LevelConfig.getBoolean("PrestigeLeveling")) {
-                needeps = LEXP;
-            } else if (LevelConfig.getBoolean("CustomLeveling")) {
-                needeps = LEXP;
-            } else {
-                needeps = nlevelss * LEXP;
-            }
-            if (this.getConfig().getBoolean("ActionBarAPI")) {
-
-                if (this.getConfig().getBoolean("Use-Actionbar-2.0")) {
-                    double required_progress = take;
-                    double current_progress = exps;
-                    double progress_percentage = current_progress / required_progress;
-                    StringBuilder sb = new StringBuilder();
-                    int bar_length = 10;
-                    for (int i = 0; i < bar_length; i++) {
-                        if (i < bar_length * progress_percentage) {
-                            sb.append(ChatColor.GREEN + "▄"); //what to append if percentage is covered (e.g. GREEN '|'s)
-                        } else {
-                            sb.append(ChatColor.GRAY + "▄"); //what to append if percentage is not covered (e.g. GRAY '|'s)
-                        }
-                    }
-                    if (this.getConfig().getBoolean("ActionBarAPI")) {
-                        ActionBarAPI.sendActionBar(player, sb.toString() + " " + ChatColor.AQUA + expsss + "/" + needeps);
-                    } else if (this.getConfig().getBoolean("CMI")) {
-                        CMI.getInstance().getActionBar().send(player, sb.toString() + " " + ChatColor.AQUA + expsss + "/" + needeps);
-                    }
-                } else {
-                    double required_progress = take;
-                    double current_progress = exps;
-                    double progress_percentage = current_progress / required_progress;
-                    StringBuilder sb = new StringBuilder();
-                    int bar_length = 20;
-                    for (int i = 0; i < bar_length; i++) {
-                        if (i < bar_length * progress_percentage) {
-                            sb.append(ChatColor.GREEN + ":"); //what to append if percentage is covered (e.g. GREEN '|'s)
-                        } else {
-                            sb.append(ChatColor.GRAY + ":"); //what to append if percentage is not covered (e.g. GRAY '|'s)
-                        }
-                    }
-                    if (this.getConfig().getBoolean("ActionBarAPI")) {
-                        ActionBarAPI.sendActionBar(player, sb.toString() + " " + ChatColor.AQUA + expsss + "/" + needeps, 0);
-                    } else if (this.getConfig().getBoolean("CMI")) {
-                        CMI.getInstance().getActionBar().send(player, sb.toString() + " " + ChatColor.AQUA + expsss + "/" + needeps);
-                    }
-                }
-                try {
-                    this.getPlayersConfig().save(this.getPlayersFile());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-
-                int lee = this.getPlayersConfig().getInt(player.getName() + ".EXP.Amount");
-                int epse = take;
-
-                if (lee > take) {
-                    CustomXP(player, lee, lee);
-                } else {
-                    lee = 0;
-                }
+                this.getPlayersConfig().set(player.getName() + ".EXP.Amount", exp);
+                this.getPlayersConfig().save(this.playersFile);
             }
         } else {
-            return;
+            if (this.getPlayersConfig().getInt(player.getName() + ".EXP.Amount") >= (LEXP * LPML)) {
+                return;
+            } else {
+                this.getPlayersConfig().set(player.getName() + ".EXP.Amount", exp);
+                this.getPlayersConfig().save(this.playersFile);
+            }
+        }
+
+        level = this.getPlayersConfig().getInt(player.getName() + ".level");
+        exp = this.getPlayersConfig().getInt(player.getName() + ".EXP.Amount");
+        int levels = level + 1;
+        if (LevelConfig.getBoolean("PrestigeLeveling")) {
+            take = LEXP;
+        } else if (LevelConfig.getBoolean("CustomLeveling")) {
+            take = LEXP;
+        } else {
+            take = level * LEXP;
+        }
+
+        leftover = exp - take;
+        if (LevelConfig.getBoolean("PrestigeLeveling")) {
+            if (getPlayersConfig().getInt(player.getName() + ".EXP.Amount") >= this.LEXP) {
+
+                getPlayersConfig().set(player.getName() + ".level", Integer.valueOf(this.level + 1));
+                getPlayersConfig().set(player.getName() + ".EXP.Amount", Integer.valueOf(this.leftover));
+                this.getPlayersConfig().save(this.playersFile);
+                LevelUp(player, 0, level);
+            }
+        } else if (LevelConfig.getBoolean("CustomLeveling")) {
+            if (getPlayersConfig().getInt(player.getName() + ".EXP.Amount") >= this.LEXP) {
+
+                getPlayersConfig().set(player.getName() + ".level", Integer.valueOf(this.level + 1));
+                getPlayersConfig().set(player.getName() + ".EXP.Amount", Integer.valueOf(this.leftover));
+                this.getPlayersConfig().save(this.playersFile);
+                LevelUp(player, 0, level);
+            }
+        } else {
+            if (getPlayersConfig().getInt(player.getName() + ".EXP.Amount") >= this.LEXP * this.level) {
+
+                getPlayersConfig().set(player.getName() + ".level", Integer.valueOf(this.level + 1));
+                getPlayersConfig().set(player.getName() + ".EXP.Amount", Integer.valueOf(this.leftover));
+                this.getPlayersConfig().save(this.playersFile);
+                LevelUp(player, 0, level);
+            }
+        }
+        if (this.getPlayersConfig().getInt(player.getName() + ".level") == LPML) {
+
+            if (this.getPlayersConfig().getInt(player.getName() + ".EXP.Amount") >= (LEXP * LPML)) {
+                player.sendMessage(ChatColor.DARK_GREEN + "You Have All The EXP You Need To Prestige.");
+                player.sendMessage(ChatColor.DARK_GREEN + " ");
+                player.sendMessage(ChatColor.DARK_GREEN + "Make Sure All Other Quests Are Completed before Prestiging.");
+            }
+        }
+
+        int nlevelss = this.getPlayersConfig().getInt(player.getName() + ".level");
+        String expsss = this.getPlayersConfig().getString(player.getName() + ".EXP.Amount");
+        exps = this.getPlayersConfig().getInt(player.getName() + ".EXP.Amount");
+        if (LevelConfig.getBoolean("PrestigeLeveling")) {
+            needeps = LEXP;
+        } else if (LevelConfig.getBoolean("CustomLeveling")) {
+            needeps = LEXP;
+        } else {
+            needeps = nlevelss * LEXP;
+        }
+        double required_progress = take;
+        double current_progress = exps;
+        double progress_percentage = current_progress / required_progress;
+        StringBuilder sb = new StringBuilder();
+        int bar_length = 10;
+        for (int i = 0; i < bar_length; i++) {
+            if (i < bar_length * progress_percentage) {
+                sb.append(ChatColor.GREEN + "▄"); //what to append if percentage is covered (e.g. GREEN '|'s)
+            } else {
+                sb.append(ChatColor.GRAY + "▄"); //what to append if percentage is not covered (e.g. GRAY '|'s)
+            }
+        }
+        if(this.playersConfig.getBoolean(player.getName() + ".ActionBar")) {
+            if (this.getConfig().getBoolean("Actionbar")) {
+
+                ActionBar(player, sb.toString() + " " + ChatColor.AQUA + expsss + "/" + needeps);
+            } else if (this.getConfig().getBoolean("CMI")) {
+                CMI.getInstance().getActionBar().send(player, sb.toString() + " " + ChatColor.AQUA + expsss + "/" + needeps);
+            }
+        }
+        try {
+            this.getPlayersConfig().save(this.getPlayersFile());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        int lee = this.getPlayersConfig().getInt(player.getName() + ".EXP.Amount");
+        int epse = take;
+
+        if (lee > take) {
+            CustomXP(player, lee, lee);
+        } else {
+            lee = 0;
         }
     }
 
@@ -587,10 +547,10 @@ public final class LP extends JavaPlugin implements Listener, LevelPointsData {
                 if (RewardsConfig.getString("RewardsMethod").equals("NONE")) {
                     Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), command.replace("%player%", player.getName()));
                 } else if (RewardsConfig.getString("RewardsMethod").equals("MESSAGE")) {
-                    player.sendMessage(API.format(Lang.getString("lpRewardMessage")) + levels);
+                    player.sendMessage(API.format(Lang.getString("lpRewardMessage")));
                     Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), command.replace("%player%", player.getName()));
                 } else if (RewardsConfig.getString("RewardsMethod").equals("TITLE")) {
-                    TitleAPI.sendTitle(player, 10, LEXP, 10, Lang.getString(API.format("lpRewardTitleTop")), Lang.getString(API.format("lpRewardTitleBottom")) + " " + levels);
+                    TitleAPI.sendTitle(player, 10, LEXP, 10, Lang.getString(API.format("lpRewardTitleTop").replace("{lp_level}", Integer.toString(1 + levels))), Lang.getString(API.format("lpRewardTitleBottom").replace("{lp_level}", Integer.toString(1 + levels))));
                     Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), command.replace("%player%", player.getName()));
                 }
             }
@@ -600,7 +560,7 @@ public final class LP extends JavaPlugin implements Listener, LevelPointsData {
                 if (RewardsConfig.getString("RewardsMethod").equals("NONE")) {
                     Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), command.replace("%player%", player.getName()));
                 } else if (RewardsConfig.getString("RewardsMethod").equals("MESSAGE")) {
-                    player.sendMessage(API.format(Lang.getString("lpRewardMessage")) + levels);
+                    player.sendMessage(API.format(Lang.getString("lpRewardMessage")));
                     Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), command.replace("%player%", player.getName()));
                 } else if (RewardsConfig.getString("RewardsMethod").equals("TITLE")) {
                     TitleAPI.sendTitle(player, 10, LEXP, 10, Lang.getString(API.format("lpRewardTitleTop")), Lang.getString(API.format("lpRewardTitleBottom")) + " " + levels);
@@ -618,7 +578,7 @@ public final class LP extends JavaPlugin implements Listener, LevelPointsData {
                 if (RewardsConfig.getString("RewardsMethod").equals("NONE")) {
                     Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), command.replace("%player%", player.getName()));
                 } else if (RewardsConfig.getString("RewardsMethod").equals("MESSAGE")) {
-                    player.sendMessage(API.format(Lang.getString("lpRewardMessage")) + levels);
+                    player.sendMessage(API.format(Lang.getString("lpRewardMessage")));
                     Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), command.replace("%player%", player.getName()));
                 } else if (RewardsConfig.getString("RewardsMethod").equals("TITLE")) {
                     TitleAPI.sendTitle(player, 10, LEXP, 10, Lang.getString(API.format("lpRewardTitleTop")), Lang.getString(API.format("lpRewardTitleBottom")) + " " + levels);
@@ -643,25 +603,10 @@ public final class LP extends JavaPlugin implements Listener, LevelPointsData {
                         mySQLSetup();
 
                     }
-                }, 0L, 1200L * delay);
+                }, 0L, 1200L * 10);
         return false;
     }
 
-    public void updateSQL() {
-        int delay = 5;
-
-        Bukkit.getScheduler().runTaskTimer(this,
-                new Runnable() {
-                    public void run() {
-                        getServer().getConsoleSender().sendMessage(ChatColor.DARK_AQUA + "LevelPoints>> Updating SQL Database");
-                        for(Player player : Bukkit.getOnlinePlayers()) {
-                            if (reconnectSQL()) {
-                                SQLQuery(player);
-                            }
-                        }
-                    }
-                }, 0L, 1200L * delay);
-    }
 
     @Override
     public boolean SQLQuery(Player player) {
@@ -675,5 +620,64 @@ public final class LP extends JavaPlugin implements Listener, LevelPointsData {
             updated = false;
         }
         return updated;
+    }
+
+    @Override
+    public void SaveLoadFiles(File file, FileConfiguration config, String Location, String secLoc, String Name) {
+        if (file == null) {
+            file = new File(this.getDataFolder() + Location);
+            config = YamlConfiguration.loadConfiguration(file);
+            getServer().getConsoleSender().sendMessage(ChatColor.AQUA + "VenturesCraft>> Loading Module File " + Name + ".yml");
+        }
+
+        if (!file.exists()) {
+            getServer().getConsoleSender().sendMessage(ChatColor.AQUA + "VenturesCraft>> Creating Module File " + Name + ".yml");
+            this.saveResource(secLoc, false);
+        }
+    }
+
+    @Override
+    public void TimedEXP() {
+        if (EXPConfig.getBoolean("TimedEXP")) {
+            Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
+                public void run() {
+                    for(Player p: Bukkit.getServer().getOnlinePlayers()){
+                        try {
+                            CustomXP(p, EXPConfig.getInt("GiveAmount"), 0);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        double seconds = EXPConfig.getInt("GiveEXP");
+                        double minutes = 0;
+                        double hours = 0;
+                        if (seconds >= 60) {
+                            minutes = seconds / 60;
+                            seconds = seconds - (minutes * 60);
+                        }
+                        if (minutes >= 60) {
+                            hours = minutes / 60;
+                            minutes = minutes - (hours * 60);
+                        }
+                        String TimeMessage;
+                        if(hours >= 1){
+                            TimeMessage = hours + " Hours";
+                        }else if(minutes >= 1){
+                            TimeMessage = (minutes + " Minute(s)");
+                        }else{
+                            TimeMessage = seconds + " Seconds";
+                        }
+
+
+                        p.sendMessage(API.format(LangConfig.getString("lpTimedReward").replace("{EXP_Timed_Amount}", Integer.toString(EXPConfig.getInt("GiveAmount"))).replace("{EXP_Timed_Delay}", TimeMessage)));
+                    }
+
+                }
+            }, 0L, EXPConfig.getInt("GiveEXP")*20L);
+        }
+    }
+
+    @Override
+    public void ActionBar(Player player, String Message) {
+        player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(Message));
     }
 }

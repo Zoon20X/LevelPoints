@@ -3,10 +3,12 @@ package levelpoints.Events;
 import com.connorlinfoot.titleapi.TitleAPI;
 import levelpoints.lp.LP;
 import org.bukkit.ChatColor;
-import org.bukkit.Sound;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.entity.*;
+import org.bukkit.entity.Animals;
+import org.bukkit.entity.Arrow;
+import org.bukkit.entity.Monster;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -73,7 +75,6 @@ public class killEvent implements Listener {
                     event.setCancelled(true);
                     TitleAPI.sendTitle(player, 20, 50, 20, ChatColor.DARK_RED + "You Must BE", ChatColor.RED + "Level "+levelpvp+" to PVP");
                     Attacker.sendMessage(ChatColor.RED + player.getName() + " Must to Level "+levelpvp+" to allow pvp");
-                    Attacker.playSound(Attacker.getLocation(), Sound.ENDERDRAGON_GROWL, 10F, 15);
                 }
             }
         }

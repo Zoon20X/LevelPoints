@@ -126,6 +126,8 @@ public class LevelPoints  implements CommandExecutor {
                     if (target != null) {
                         try {
                             lp.CustomXP(target, Integer.parseInt(args[2]),0);
+                            player.sendMessage(API.format(lp.LangConfig.getString("lpAdminEXPGive").replace("{LP_TARGET}", target.getName()).replace("{EXP_AMOUNT}", args[2])));
+                            target.sendMessage(API.format(lp.LangConfig.getString("lpEXPGive").replace("{EXP_Amount}", args[2]).replace("{LP_USER}", player.getName())));
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -199,35 +201,46 @@ public class LevelPoints  implements CommandExecutor {
 
 
             if (player.hasPermission("lp.player")) {
+                if (args[0].equalsIgnoreCase("toggle")) {
+                    if (lp.playersConfig.getBoolean(player.getName() + ".ActionBar")) {
+                        lp.playersConfig.set(player.getName() + ".ActionBar", false);
+                    } else {
+                        lp.playersConfig.set(player.getName() + ".ActionBar", true);
+                    }
+                    try {
+                        lp.playersConfig.save(lp.playersFile);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    player.sendMessage(API.format(lp.LangConfig.getString("lpsActionBarToggle").replace("{LP_Toggle_Value}", String.valueOf(lp.playersConfig.getBoolean(player.getName() + ".ActionBar")))));
+
+                }
                 if (args[0].equalsIgnoreCase("bp")) {
                     customInventory i = new customInventory();
                     i.boosterInventory(player);
                 }
-                if(args[0].equalsIgnoreCase("top")){
-                    sender.sendMessage(ChatColor.DARK_GRAY + "-----------------------");
-                    posTop = 0;
+                posTop = 0;
 
-                    ConfigurationSection cf = lp.getPlayersConfig().getConfigurationSection("");
-                    cf.getValues(false)
-                            .entrySet()
-                            .stream()
-                            .sorted((a1, a2) -> {
-                                int points1 = ((MemorySection) a1.getValue()).getInt("level");
-                                int points2 = ((MemorySection) a2.getValue()).getInt("level");
-                                return points2 - points1;
-                            })
-                            .limit(10) // Limit the number of 'results'
-                            .forEach(f -> {
-                                posTop += 1;
+                ConfigurationSection cf = lp.getPlayersConfig().getConfigurationSection("");
+                cf.getValues(false)
+                        .entrySet()
+                        .stream()
+                        .sorted((a1, a2) -> {
+                            int points1 = ((MemorySection) a1.getValue()).getInt("level");
+                            int points2 = ((MemorySection) a2.getValue()).getInt("level");
+                            return points2 - points1;
+                        })
+                        .limit(10) // Limit the number of 'results'
+                        .forEach(f -> {
+                            posTop += 1;
 
-                                int points = ((MemorySection) f.getValue()).getInt("level");
-                                sender.sendMessage(ChatColor.AQUA + Integer.toString(posTop) + ". " + f.getKey() + ": " + points);
+                            int points = ((MemorySection) f.getValue()).getInt("level");
+                            for (String x : lp.LangConfig.getStringList("lpsTopList")) {
+                                sender.sendMessage(API.format(x).replace("{LP_Ranked}", Integer.toString(posTop)).replace("{LP_Player}", f.getKey()).replace("{LP_LEVEL}", Integer.toString(points)));
                                 // Here you can send to player or do whatever you wan't.
-                            });
-                    sender.sendMessage(ChatColor.DARK_GRAY + "-----------------------");
 
-
-                }
+                            }
+                        });
             }
 
             if (args[0].equalsIgnoreCase("booster")) {
@@ -427,6 +440,8 @@ public class LevelPoints  implements CommandExecutor {
                 if (target != null) {
                     try {
                         lp.CustomXP(target, Integer.parseInt(args[2]),0);
+                        sender.sendMessage(API.format(lp.LangConfig.getString("lpAdminEXPGive").replace("{LP_TARGET}", target.getName()).replace("{EXP_AMOUNT}", args[2])));
+                        target.sendMessage(API.format(lp.LangConfig.getString("lpEXPGive").replace("{EXP_Amount}", args[2]).replace("{LP_USER}", lp.LangConfig.getString("lpServerName"))));
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

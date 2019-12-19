@@ -6,23 +6,41 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7510956-6c72-465e-9e6b-1e334f122a6b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/BossBarAPI.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/levelpoints/Events/LevelPointsData.java" afterDir="false" />
+    <list default="true" id="d7510956-6c72-465e-9e6b-1e334f122a6b" name="Default Changelist" comment="Fixed issue with SQL getting ready for 1.1.9.6 update">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_bstats_bstats_bukkit_1_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/levelpoints/lp/MetricsLite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/ActionBarAPI_1_5_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_2_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_8_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_17_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_21_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_persistence_persistence_api_1_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_md_5_bungeecord_chat_1_8_SNAPSHOT.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_md_5_bungeecord_chat_1_12_SNAPSHOT.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_avaje_ebean_2_8_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_spigotmc_spigot_api_1_8_8_R0_1_SNAPSHOT.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_spigotmc_spigot_api_1_12_2_R0_1_SNAPSHOT.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_1_15.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_1_19.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LevelPoints.iml" beforeDir="false" afterPath="$PROJECT_DIR$/LevelPoints.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/Events/ChatEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/Events/ChatEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/Events/LevelPointsData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/Events/LevelPointsData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/Events/joinEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/Events/joinEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/Events/killEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/Events/killEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/commands/LevelPoints.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/commands/LevelPoints.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/lp/LP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/lp/LP.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Settings/EXP.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Settings/EXP.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/lang.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lang.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Settings/EXP.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Settings/EXP.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/lang.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/lang.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/Events/ChatEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levelpoints/Events/ChatEvent.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/Events/joinEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levelpoints/Events/joinEvent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/commands/LevelPoints.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levelpoints/commands/LevelPoints.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/lp/LP$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levelpoints/lp/LP$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/lp/LP.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levelpoints/lp/LP.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plugin.yml" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,9 +72,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="AnnotationType" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -69,6 +87,11 @@
     </ignored-facets>
   </component>
   <component name="ProjectId" id="1Ou7NkViPoCYhUlMYNIr9njY1A6" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="Downloaded.Files.Path.Enabled" value="true" />
     <property name="GenerateAntBuildDialog.backupFiles" value="true" />
@@ -82,16 +105,15 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553901894017" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="E:/Minecraft  Plugins/Zkits" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="levelpoints.otherPluginConnections" />
-      <recent name="levelpoints.Events" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="levelpoints.utils" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
@@ -100,26 +122,15 @@
       <recent name="D:\Plugins\LevelPoints\src\main\java\levelpoints\APIFILES" />
       <recent name="F:\Minecraft  Plugins\LevelPoints\src\main\java\levelpoints\lp" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="levelpoints.utils" />
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="levelpoints.otherPluginConnections" />
+      <recent name="levelpoints.Events" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="G:\Minecraft  Plugins\LevelPoints\src\main\resources\OtherSettings" />
       <recent name="G:\Minecraft  Plugins\LevelPoints\src\main\resources" />
       <recent name="F:\Minecraft  Plugins\LevelPoints\src\main\java\levelpoints\lp" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager">
     <configuration name="LevelPoints build" type="MavenRunConfiguration" factoryName="Maven">
@@ -148,6 +159,18 @@
       </MavenSettings>
       <method v="2" />
     </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -202,7 +225,32 @@
       <workItem from="1572245272253" duration="3723000" />
       <workItem from="1572508165379" duration="221000" />
       <workItem from="1572508542397" duration="2515000" />
-      <workItem from="1572517512406" duration="841000" />
+      <workItem from="1572517512406" duration="1824000" />
+      <workItem from="1572755118024" duration="53000" />
+      <workItem from="1572848425561" duration="522000" />
+      <workItem from="1572855116963" duration="4022000" />
+      <workItem from="1572902389393" duration="54000" />
+      <workItem from="1573040952474" duration="1611000" />
+      <workItem from="1573107017270" duration="1701000" />
+      <workItem from="1573121281875" duration="3172000" />
+      <workItem from="1573171536401" duration="542000" />
+      <workItem from="1573172111318" duration="1061000" />
+      <workItem from="1573175227256" duration="29000" />
+      <workItem from="1573242706538" duration="1322000" />
+      <workItem from="1573244173558" duration="1922000" />
+      <workItem from="1573274639786" duration="4063000" />
+      <workItem from="1573887537552" duration="493000" />
+      <workItem from="1574231499964" duration="1891000" />
+      <workItem from="1574324434352" duration="1295000" />
+      <workItem from="1574381390744" duration="491000" />
+      <workItem from="1574602306221" duration="1259000" />
+      <workItem from="1575670024046" duration="613000" />
+      <workItem from="1576302452127" duration="691000" />
+      <workItem from="1576445064421" duration="1225000" />
+      <workItem from="1576582153002" duration="1508000" />
+      <workItem from="1576671441317" duration="507000" />
+      <workItem from="1576704971207" duration="4021000" />
+      <workItem from="1576744656283" duration="8246000" />
     </task>
     <task id="LOCAL-00001" summary="got rid of un-needed files">
       <created>1566466618431</created>
@@ -260,7 +308,14 @@
       <option name="project" value="LOCAL" />
       <updated>1570872436797</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Fixed issue with SQL getting ready for 1.1.9.6 update">
+      <created>1572518410357</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1572518410357</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -290,6 +345,22 @@
     <MESSAGE value="fixed some bugs, and slowly working on updates" />
     <MESSAGE value="Fixed bugs, now a stable dev build, last dev build before next update" />
     <MESSAGE value="Added another lang message, it sends a message to the player for perlevelingores" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added another lang message, it sends a message to the player for perlevelingores" />
+    <MESSAGE value="Fixed issue with SQL getting ready for 1.1.9.6 update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed issue with SQL getting ready for 1.1.9.6 update" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1576748946509">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1155" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1576582357880" />
+    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1576748946509" />
+    <state x="843" y="254" key="FileChooserDialogImpl" timestamp="1576749239358">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="843" y="254" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1576749239358" />
+    <state x="440" y="94" key="SettingsEditor" timestamp="1576749246304">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="440" y="94" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1576749246304" />
   </component>
 </project>

@@ -3,6 +3,7 @@ package levelpoints.Events;
 import levelpoints.lp.LP;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.Plugin;
@@ -23,7 +24,7 @@ public class joinEvent implements Listener {
 
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.HIGHEST)
     public void onJoin(PlayerJoinEvent event) throws IOException {
 
         Player player = event.getPlayer();
@@ -35,6 +36,9 @@ public class joinEvent implements Listener {
 
 
         if (lp.getPlayersConfig().contains(player.getName())) {
+            if(!lp.getPlayersConfig().contains(player.getName() + ".ActionBar")){
+                lp.getPlayersConfig().set(player.getName() + ".ActionBar", true);
+            }
 
 
             lp.getPlayersConfig().set(player.getName() + ".EXP.GenOn", true);
@@ -46,7 +50,6 @@ public class joinEvent implements Listener {
             }
 
             //Create a new BossBar
-
 
 
 
@@ -66,6 +69,7 @@ public class joinEvent implements Listener {
             lp.getPlayersConfig().set(player.getName() + ".EXP.Boost9x", 0);
             lp.getPlayersConfig().set(player.getName() + ".EXP.Boost10x", 0);
             lp.getPlayersConfig().set(player.getName() + ".EXP.Active", 1);
+            lp.getPlayersConfig().set(player.getName() + ".ActionBar", true);
             lp.getPlayersConfig().save(lp.getPlayersFile());
         }
     }

@@ -123,3 +123,12 @@
   oEMERALD_ORE: 0
   oQUARTZ_ORE: 0
   Use-Booster: false
+
+  #####################################
+  #Timed EXP (Give EXP every X Seconds)#
+  #####################################
+  TimedEXP: false #Make Sure to /restart your server every time you change this, if not it may not work correctly, be warned before asking for support
+
+  GiveEXP: 60 #Will give all players a certain amount of exp every minute by default (Must Be in seconds, the plugin will auto format the time for you)
+  GiveAmount: 1 #will give 1 exp to all players in given time above
+

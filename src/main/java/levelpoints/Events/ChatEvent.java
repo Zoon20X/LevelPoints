@@ -31,7 +31,7 @@ public class ChatEvent implements Listener {
                 String symbol = lp.getConfig().getString("Symbol");
                 String symbolColor = lp.getConfig().getString("SymbolColor");
 
-                event.setFormat(API.format(symbolColor)+"✶"+API.format(color) + levels + " " + ChatColor.RESET + chat);
+                event.setFormat(API.format(symbolColor)+symbol+API.format(color) + levels + " " + ChatColor.RESET + chat);
             }
         } else {
             if (lp.getConfig().getBoolean("PrefixChat")) {

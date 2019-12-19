@@ -12,6 +12,7 @@ lp:
   - '&b/lps expremove <player> <amount> &fRemove experience from a player'
   - '&b/lps top &fShows top 10 players'
   - '&b/lps setlevel <player> <level> &fSets a players level'
+  - '&b/lps toggle &f Toggles The LevelPoints Actionbar, (Per Player Setting)'
   - '&8------------------'
 
 lpsInfo:
@@ -21,6 +22,13 @@ lpsInfo:
   - '&2EXP Progress&7> &a{lp_progress}'
   - '&2Prestige&7> &a{lp_prestige}'
 
+lpsActionBarToggle: '&2You have toggled the LevelPoints Actionbar &6{LP_Toggle_Value}'
+
+lpsTopList:
+  - '&8-----------------------'
+  - '&b{LP_Ranked} &3{LP_Player} &b- {LP_LEVEL}'
+  - '&8-----------------------'
+
 
 lpreload: '&aLevelPoints Plugin Config/players reloaded'
 
@@ -28,11 +36,17 @@ lpLevelCustomError: '&4Max Level is not set in customLeveling, please set it up 
 lpLevelCustomErrorPlayer: '&cPlease Contact the Server Admin about this error, Error-Code: CL-EXP-Max'
 
 lpLevelUpTop: '&2You Leveled Up'
-lpLevelUpBottom: '&bYour Now Level'
+lpLevelUpBottom: '&bYour Now Level {lp_level}'
 
-lpRewardMessage: '&bYou Have Recieved Leveling Reward'
+lpRewardMessage: '&bYou Have Received Leveling Reward'
 
 lpRewardTitleTop: '&bLeveling Reward Received'
 lpRewardTitleBottom: '&8Level Reward: &b'
 
 lpPerLevelOre: '&cYou Need To Be {lp_required_level} to mine this block'
+
+lpTimedReward: '&2You Just Received &6{EXP_Timed_Amount} &2next amount will be in &6{EXP_Timed_Delay} so stay online'
+
+lpEXPGive: '&2You Just Received &6{EXP_Amount} &2from &6{LP_USER}' #Warning if you are using the EXP give command through the console DO NOT place THE, as (LP_USER) will auto correct to lpServerName anyway
+lpServerName: 'SERVER' #use this for when you are sending EXPGIVE command through console: DO NOT USE COLOR CODES THEY WILL NOT SHOW
+lpAdminEXPGive: '&2You Just Gave &6{LP_TARGET} &2EXP: &6{EXP_AMOUNT}' #This Will Send the The User that Uses The EXPGIVE Command
