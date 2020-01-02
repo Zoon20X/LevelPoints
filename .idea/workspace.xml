@@ -8,7 +8,15 @@
   <component name="ChangeListManager">
     <list default="true" id="d7510956-6c72-465e-9e6b-1e334f122a6b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/Events/customInventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/Events/customInventory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/commands/LevelPoints.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/commands/LevelPoints.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/lp/LP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/lp/LP.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/lang.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/lang.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/Events/customInventory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levelpoints/Events/customInventory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/commands/LevelPoints.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levelpoints/commands/LevelPoints.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/lp/LP.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levelpoints/lp/LP.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plugin.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +82,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553901894017" />
-    <property name="last_opened_file_path" value="E:/Minecraft  Plugins/Zkits" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -219,7 +227,16 @@
       <workItem from="1576582153002" duration="1508000" />
       <workItem from="1576671441317" duration="507000" />
       <workItem from="1576704971207" duration="4021000" />
-      <workItem from="1576744656283" duration="8828000" />
+      <workItem from="1576744656283" duration="10763000" />
+      <workItem from="1576793588546" duration="76000" />
+      <workItem from="1576793796444" duration="2202000" />
+      <workItem from="1577058762256" duration="683000" />
+      <workItem from="1577084603983" duration="42000" />
+      <workItem from="1577085064822" duration="1100000" />
+      <workItem from="1577135296247" duration="659000" />
+      <workItem from="1577793909323" duration="1630000" />
+      <workItem from="1577959157589" duration="60000" />
+      <workItem from="1577959322071" duration="4237000" />
     </task>
     <task id="LOCAL-00001" summary="got rid of un-needed files">
       <created>1566466618431</created>
@@ -291,7 +308,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576752947490</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="fixed issue with /lps top">
+      <created>1576753520765</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1576753520765</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -323,7 +347,8 @@
     <MESSAGE value="Added another lang message, it sends a message to the player for perlevelingores" />
     <MESSAGE value="Fixed issue with SQL getting ready for 1.1.9.6 update" />
     <MESSAGE value="Changed some code and added a lot of features ready for the next update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed some code and added a lot of features ready for the next update" />
+    <MESSAGE value="fixed issue with /lps top" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed issue with /lps top" />
   </component>
   <component name="WindowStateProjectService">
     <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1576748946509">
@@ -331,21 +356,25 @@
     </state>
     <state x="-1155" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1576582357880" />
     <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1576748946509" />
-    <state x="351" y="114" key="CommitChangelistDialog2" timestamp="1576752945099">
+    <state x="351" y="114" key="CommitChangelistDialog2" timestamp="1576753519579">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="351" y="114" key="CommitChangelistDialog2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1576752945099" />
-    <state x="843" y="254" key="FileChooserDialogImpl" timestamp="1576749239358">
+    <state x="351" y="114" key="CommitChangelistDialog2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1576753519579" />
+    <state x="843" y="254" key="FileChooserDialogImpl" timestamp="1577959218488">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="843" y="254" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1576749239358" />
+    <state x="843" y="254" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1577959218488" />
     <state x="440" y="94" key="SettingsEditor" timestamp="1576749246304">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="440" y="94" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1576749246304" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1576752955343">
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1576753523721">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1576752955343" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1576753523721" />
+    <state x="-1306" y="516" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1577968943590">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1306" y="516" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1577968943590" />
   </component>
 </project>

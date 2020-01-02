@@ -36,7 +36,7 @@ lpLevelCustomError: '&4Max Level is not set in customLeveling, please set it up 
 lpLevelCustomErrorPlayer: '&cPlease Contact the Server Admin about this error, Error-Code: CL-EXP-Max'
 
 lpLevelUpTop: '&2You Leveled Up'
-lpLevelUpBottom: '&bYour Now Level'
+lpLevelUpBottom: '&bYour Now Level {lp_level}'
 
 lpRewardMessage: '&bYou Have Received Leveling Reward'
 

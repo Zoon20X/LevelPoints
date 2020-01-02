@@ -10,7 +10,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.MemorySection;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -31,8 +30,6 @@ public class LevelPoints  implements CommandExecutor {
     public String commandString;
     public int posTop;
 
-    File file = new File("plugins/LP/lang.yml");
-    FileConfiguration Lang = YamlConfiguration.loadConfiguration(file);
 
     public LevelPoints(LP lp) {
 
@@ -73,7 +70,7 @@ public class LevelPoints  implements CommandExecutor {
         //Set<String> sl = Lang.getConfigurationSection("lp").getKeys(false);
         int LEXP = lp.LevelConfig.getInt("LevelingEXP");
         if (args.length == 0) {
-            for(String x : Lang.getStringList("lp")) {
+            for(String x : lp.LangConfig.getStringList("lp")) {
 
                 sender.sendMessage(API.format(x));
             }
@@ -84,11 +81,11 @@ public class LevelPoints  implements CommandExecutor {
 
         if (sender.hasPermission("lp.admin.reload")) {
             if (args[0].equalsIgnoreCase("reload")) {
-                sender.sendMessage(API.format(Lang.getString("lpreload")));
+                sender.sendMessage(API.format(lp.LangConfig.getString("lpreload")));
 
                 lp.playersFile = new File(lp.getDataFolder(), "players.yml");
                 lp.boosterFile = new File(lp.getDataFolder(), "Boosters.yml");
-                lp.LangFile = new File(lp.getDataFolder(), "Lang.yml");
+                lp.LangFile = new File("plugins/LP/lang.yml");
                 lp.EXPFile = new File(lp.getDataFolder(), "/Settings/EXP.yml");
                 lp.ESFile = new File(lp.getDataFolder(), "/OtherSettings/EpicSpawners.yml");
                 lp.WSFile = new File(lp.getDataFolder(), "/OtherSettings/WildStacker.yml");
@@ -327,7 +324,7 @@ public class LevelPoints  implements CommandExecutor {
                        // player.sendMessage(ChatColor.DARK_GREEN + "");
                        // player.sendMessage(API.format(Lang.getString("lpinfoPrestige").replace("{lp_prestige}", Integer.toString(pres))));
 
-                        for(String x : Lang.getStringList("lpsInfo")) {
+                        for(String x : lp.LangConfig.getStringList("lpsInfo")) {
                          sender.sendMessage(API.format(x.replace("{lp_player}", player.getName()).replace("{lp_level}", levels).replace("{lp_xp}", EXP).replace("{lp_progress}", Percentage).replace("{lp_prestige}", Integer.toString(pres))));
                         }
                         return true;
@@ -354,7 +351,7 @@ public class LevelPoints  implements CommandExecutor {
                     String EXP = Integer.toString(expss) + "/" + Integer.toString(needep);
                     String Percentage = Math.round(percentage/needep) + "%";
 
-                    for(String x : Lang.getStringList("lpsInfo")) {
+                    for(String x : lp.LangConfig.getStringList("lpsInfo")) {
 
                         sender.sendMessage(API.format(x.replace("{lp_player}", str.toString()).replace("{lp_level}", levels).replace("{lp_xp}", EXP).replace("{lp_progress}", Percentage).replace("{lp_prestige}", Integer.toString(pres))));
                     }

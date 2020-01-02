@@ -128,7 +128,7 @@ public final class LP extends JavaPlugin implements Listener, LevelPointsData {
 
         playersFile = new File(getDataFolder(), "players.yml");
         boosterFile = new File(getDataFolder(), "Boosters.yml");
-        LangFile = new File(getDataFolder(), "Lang.yml");
+        LangFile = new File(getDataFolder(), "lang.yml");
         EXPFile = new File(getDataFolder(), "/Settings/EXP.yml");
         ESFile = new File(getDataFolder(), "/OtherSettings/EpicSpawners.yml");
         WSFile = new File(getDataFolder(), "/OtherSettings/WildStacker.yml");
@@ -563,7 +563,7 @@ public final class LP extends JavaPlugin implements Listener, LevelPointsData {
                     player.sendMessage(API.format(Lang.getString("lpRewardMessage")));
                     Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), command.replace("%player%", player.getName()));
                 } else if (RewardsConfig.getString("RewardsMethod").equals("TITLE")) {
-                    TitleAPI.sendTitle(player, 10, LEXP, 10, Lang.getString(API.format("lpRewardTitleTop")), Lang.getString(API.format("lpRewardTitleBottom")) + " " + levels);
+                    TitleAPI.sendTitle(player, 10, LEXP, 10, Lang.getString(API.format("lpRewardTitleTop").replace("{lp_level}", Integer.toString(1 + levels))), Lang.getString(API.format("lpRewardTitleBottom").replace("{lp_level}", Integer.toString(1 + levels))));
                     Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), command.replace("%player%", player.getName()));
                 }
             }
@@ -581,7 +581,7 @@ public final class LP extends JavaPlugin implements Listener, LevelPointsData {
                     player.sendMessage(API.format(Lang.getString("lpRewardMessage")));
                     Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), command.replace("%player%", player.getName()));
                 } else if (RewardsConfig.getString("RewardsMethod").equals("TITLE")) {
-                    TitleAPI.sendTitle(player, 10, LEXP, 10, Lang.getString(API.format("lpRewardTitleTop")), Lang.getString(API.format("lpRewardTitleBottom")) + " " + levels);
+                    TitleAPI.sendTitle(player, 10, LEXP, 10, Lang.getString(API.format("lpRewardTitleTop").replace("{lp_level}", Integer.toString(1 + levels))), Lang.getString(API.format("lpRewardTitleBottom").replace("{lp_level}", Integer.toString(1 + levels))));
                     Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), command.replace("%player%", player.getName()));
                 }
             }
@@ -641,36 +641,38 @@ public final class LP extends JavaPlugin implements Listener, LevelPointsData {
         if (EXPConfig.getBoolean("TimedEXP")) {
             Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
                 public void run() {
-                    for(Player p: Bukkit.getServer().getOnlinePlayers()){
-                        try {
-                            CustomXP(p, EXPConfig.getInt("GiveAmount"), 0);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                        double seconds = EXPConfig.getInt("GiveEXP");
-                        double minutes = 0;
-                        double hours = 0;
-                        if (seconds >= 60) {
-                            minutes = seconds / 60;
-                            seconds = seconds - (minutes * 60);
-                        }
-                        if (minutes >= 60) {
-                            hours = minutes / 60;
-                            minutes = minutes - (hours * 60);
-                        }
-                        String TimeMessage;
-                        if(hours >= 1){
-                            TimeMessage = hours + " Hours";
-                        }else if(minutes >= 1){
-                            TimeMessage = (minutes + " Minute(s)");
-                        }else{
-                            TimeMessage = seconds + " Seconds";
-                        }
+                    if (Bukkit.getServer().getOnlinePlayers().size() >= 1) {
+                        for (Player p : Bukkit.getServer().getOnlinePlayers()) {
+                            try {
+                                CustomXP(p, EXPConfig.getInt("GiveAmount"), 0);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            double seconds = EXPConfig.getInt("GiveEXP");
+                            double minutes = 0;
+                            double hours = 0;
+                            if (seconds >= 60) {
+                                minutes = seconds / 60;
+                                seconds = seconds - (minutes * 60);
+                            }
+                            if (minutes >= 60) {
+                                hours = minutes / 60;
+                                minutes = minutes - (hours * 60);
+                            }
+                            String TimeMessage;
+                            if (hours >= 1) {
+                                TimeMessage = hours + " Hours";
+                            } else if (minutes >= 1) {
+                                TimeMessage = (minutes + " Minute(s)");
+                            } else {
+                                TimeMessage = seconds + " Seconds";
+                            }
 
 
-                        p.sendMessage(API.format(LangConfig.getString("lpTimedReward").replace("{EXP_Timed_Amount}", Integer.toString(EXPConfig.getInt("GiveAmount"))).replace("{EXP_Timed_Delay}", TimeMessage)));
+                            p.sendMessage(API.format(LangConfig.getString("lpTimedReward").replace("{EXP_Timed_Amount}", Integer.toString(EXPConfig.getInt("GiveAmount"))).replace("{EXP_Timed_Delay}", TimeMessage)));
+                        }
+
                     }
-
                 }
             }, 0L, EXPConfig.getInt("GiveEXP")*20L);
         }

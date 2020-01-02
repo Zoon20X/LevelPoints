@@ -287,7 +287,7 @@ public class customInventory implements Listener {
         if (open == null) {
             return;
         }
-        if (open.getName().equals(ChatColor.DARK_AQUA + "Backpack")) {
+        if (open.getTitle().equals(ChatColor.DARK_AQUA + "Backpack")) {
             event.setCancelled(true);
 
             if (item.equals(null) || !item.hasItemMeta()) {
