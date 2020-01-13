@@ -1,16 +1,18 @@
 package levelpoints.Events;
 
-import java.io.IOException;
 import levelpoints.lp.LP;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.plugin.Plugin;
+
+import java.io.File;
+import java.io.IOException;
 
 public class ItemUse implements Listener {
     private Plugin plugin = LP.getPlugin(LP.class);
@@ -22,14 +24,16 @@ public class ItemUse implements Listener {
 
     public void boosteruse(Player player, int multiplier)
             throws IOException {
+        File userdata = new File(lp.userFolder, player.getUniqueId() + ".yml");
+        FileConfiguration UsersConfig = YamlConfiguration.loadConfiguration(userdata);
         if (player.getItemInHand().getAmount() > 1) {
             player.getItemInHand().setAmount(player.getItemInHand().getAmount() - 1);
         } else {
             player.getInventory().setItemInHand(new ItemStack(Material.AIR));
         }
-        int numm = this.lp.getPlayersConfig().getInt(player.getName() + ".EXP.Boost" + multiplier + "x");
-        this.lp.getPlayersConfig().set(player.getName() + ".EXP.Boost" + multiplier + "x", Integer.valueOf(numm + 1));
-        this.lp.getPlayersConfig().save(this.lp.getPlayersFile());
+        int numm = UsersConfig.getInt(player.getName() + ".EXP.Boost" + multiplier + "x");
+        UsersConfig.set(player.getName() + ".EXP.Boost" + multiplier + "x", Integer.valueOf(numm + 1));
+        UsersConfig.save(userdata);
     }
 
     @EventHandler

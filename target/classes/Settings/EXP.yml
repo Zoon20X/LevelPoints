@@ -4,6 +4,9 @@
   #####################################
   Anti-EXP-Dupe: false
 
+  #this option is if you do not want players getting exp for silk touch on their items
+  Anti-Silk-EXP: true
+
 
   #####################################
   #   Earn EXP When Killing Players   #

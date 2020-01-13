@@ -10,11 +10,11 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.MemorySection;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import java.io.File;
 import java.io.IOException;
@@ -36,33 +36,6 @@ public class LevelPoints  implements CommandExecutor {
     }
 
 
-
-    public void doCountDown() {
-		
-		 
-        if (seconds > 0) {
-            seconds -= 1;
-
-            new BukkitRunnable() {
-                @Override
-                public void run() {
-                    doCountDown();
-                }
-            }.runTaskLater(lp, 20);
-        }
-        else if(seconds == 0){
-            if(minutes == 0){
-                if(!(hours == 0)){
-                    minutes = hours * 60;
-                    hours -= 1;
-                }
-            }else{
-                seconds = 60;
-                minutes -= 1;
-            }
-            doCountDown();
-        }
-    }
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
@@ -70,9 +43,11 @@ public class LevelPoints  implements CommandExecutor {
         //Set<String> sl = Lang.getConfigurationSection("lp").getKeys(false);
         int LEXP = lp.LevelConfig.getInt("LevelingEXP");
         if (args.length == 0) {
-            for(String x : lp.LangConfig.getStringList("lp")) {
+            if(sender.hasPermission("lp.lps")) {
+                for (String x : lp.LangConfig.getStringList("lp")) {
 
-                sender.sendMessage(API.format(x));
+                    sender.sendMessage(API.format(x));
+                }
             }
 
 
@@ -83,16 +58,18 @@ public class LevelPoints  implements CommandExecutor {
             if (args[0].equalsIgnoreCase("reload")) {
                 sender.sendMessage(API.format(lp.LangConfig.getString("lpreload")));
 
-                lp.playersFile = new File(lp.getDataFolder(), "players.yml");
+
                 lp.boosterFile = new File(lp.getDataFolder(), "Boosters.yml");
-                lp.LangFile = new File("plugins/LP/lang.yml");
+                lp.TopListFile = new File(lp.getDataFolder(), "TopList.yml");
                 lp.EXPFile = new File(lp.getDataFolder(), "/Settings/EXP.yml");
                 lp.ESFile = new File(lp.getDataFolder(), "/OtherSettings/EpicSpawners.yml");
                 lp.WSFile = new File(lp.getDataFolder(), "/OtherSettings/WildStacker.yml");
                 lp.RewardsFile = new File(lp.getDataFolder(), "/Settings/Rewards.yml");
                 lp.LevelFile = new File(lp.getDataFolder(), "/Settings/Levels.yml");
                 lp.boosterConfig = YamlConfiguration.loadConfiguration(lp.boosterFile);
-                lp.playersConfig = YamlConfiguration.loadConfiguration(lp.playersFile);
+                lp.FormatsConfig = YamlConfiguration.loadConfiguration(lp.FormatsFile);
+                lp.FileChanceConfig = YamlConfiguration.loadConfiguration(lp.FileChanceFile);
+
                 lp.LangConfig = YamlConfiguration.loadConfiguration(lp.LangFile);
                 lp.EXPConfig = YamlConfiguration.loadConfiguration(lp.EXPFile);
                 lp.LevelConfig = YamlConfiguration.loadConfiguration(lp.LevelFile);
@@ -107,6 +84,7 @@ public class LevelPoints  implements CommandExecutor {
         //Player player = (Player) sender;
         if(sender instanceof Player){
             Player player = (Player) sender;
+
             if(args[0].equalsIgnoreCase("expgive")){
                 if(player.hasPermission("lp.admin.give")) {
                     if (args.length == 1) {
@@ -119,12 +97,16 @@ public class LevelPoints  implements CommandExecutor {
                         return true;
                     }
                     Player target = Bukkit.getPlayer(args[1]);
+                    File userdata = new File(lp.userFolder, target.getUniqueId() + ".yml");
+                    FileConfiguration UsersConfig = YamlConfiguration.loadConfiguration(userdata);
 
                     if (target != null) {
                         try {
+
                             lp.CustomXP(target, Integer.parseInt(args[2]),0);
                             player.sendMessage(API.format(lp.LangConfig.getString("lpAdminEXPGive").replace("{LP_TARGET}", target.getName()).replace("{EXP_AMOUNT}", args[2])));
                             target.sendMessage(API.format(lp.LangConfig.getString("lpEXPGive").replace("{EXP_Amount}", args[2]).replace("{LP_USER}", player.getName())));
+
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -146,14 +128,21 @@ public class LevelPoints  implements CommandExecutor {
                         return true;
                     }
                     Player target = Bukkit.getPlayer(args[1]);
+                    File userdata = new File(lp.userFolder, target.getUniqueId() + ".yml");
+                    FileConfiguration UsersConfig = YamlConfiguration.loadConfiguration(userdata);
 
                     if (target != null) {
-                        int expp = lp.getPlayersConfig().getInt(target.getName() + ".EXP.Amount");
+                        int expp = UsersConfig.getInt(target.getName() + ".EXP.Amount");
                         int t = Integer.parseInt(args[2]);
                         int tep = expp - t;
-                        lp.getPlayersConfig().set(target.getName() + ".EXP.Amount", tep);
+                        UsersConfig.set(target.getName() + ".EXP.Amount", tep);
                         try {
-                            lp.getPlayersConfig().save(lp.getPlayersFile());
+                            UsersConfig.save(userdata);
+                            if(lp.getConfig().getBoolean("UseSQL")) {
+                                lp.update_EXP(target.getUniqueId(), target);
+                                lp.update_LEVEL(target.getUniqueId(), target);
+                                lp.update_PRESTIGE(target.getUniqueId(), target);
+                            }
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -161,11 +150,7 @@ public class LevelPoints  implements CommandExecutor {
                 }else{
                     player.sendMessage(ChatColor.RED + "You Have Insufficient Permission");
                 }
-                if(lp.getConfig().getBoolean("UseSQL")) {
-                    lp.update_EXP(player.getUniqueId(), player);
-                    lp.update_LEVEL(player.getUniqueId(), player);
-                    lp.update_PRESTIGE(player.getUniqueId(), player);
-                }
+
             }
 
             if(args[0].equalsIgnoreCase("setlevel")){
@@ -179,12 +164,22 @@ public class LevelPoints  implements CommandExecutor {
                         return true;
                     }
                     Player target = Bukkit.getPlayer(args[1]);
+                    File userdata = new File(lp.userFolder, player.getUniqueId() + ".yml");
+                    FileConfiguration UsersConfig = YamlConfiguration.loadConfiguration(userdata);
 
                     if(target != null){
                         int level = Integer.parseInt(args[2]);
-                        lp.getPlayersConfig().set(target.getName() + ".level", level);
+                        UsersConfig.set(target.getName() + ".level", level);
+                        lp.TopListConfig.set(target.getName() + ".level", level);
+
                         try {
-                            lp.getPlayersConfig().save(lp.playersFile);
+                            UsersConfig.save(userdata);
+                            lp.TopListConfig.save(lp.TopListFile);
+                            if(lp.getConfig().getBoolean("UseSQL")) {
+                                lp.update_EXP(target.getUniqueId(), target);
+                                lp.update_LEVEL(target.getUniqueId(), target);
+                                lp.update_PRESTIGE(target.getUniqueId(), target);
+                            }
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -193,23 +188,24 @@ public class LevelPoints  implements CommandExecutor {
                     player.sendMessage(ChatColor.RED + "You Have Insufficient Permission");
                 }
             }
+            File userdata = new File(lp.userFolder, player.getUniqueId() + ".yml");
+            FileConfiguration UsersConfig = YamlConfiguration.loadConfiguration(userdata);
             playerName = player.getName();
-            cfgName = lp.getPlayersConfig().getString(player.getName());
 
 
             if (player.hasPermission("lp.player")) {
                 if (args[0].equalsIgnoreCase("toggle")) {
-                    if (lp.playersConfig.getBoolean(player.getName() + ".ActionBar")) {
-                        lp.playersConfig.set(player.getName() + ".ActionBar", false);
+                    if (UsersConfig.getBoolean(player.getName() + ".ActionBar")) {
+                        UsersConfig.set(player.getName() + ".ActionBar", false);
                     } else {
-                        lp.playersConfig.set(player.getName() + ".ActionBar", true);
+                        UsersConfig.set(player.getName() + ".ActionBar", true);
                     }
                     try {
-                        lp.playersConfig.save(lp.playersFile);
+                        UsersConfig.save(userdata);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    player.sendMessage(API.format(lp.LangConfig.getString("lpsActionBarToggle").replace("{LP_Toggle_Value}", String.valueOf(lp.playersConfig.getBoolean(player.getName() + ".ActionBar")))));
+                    player.sendMessage(API.format(lp.LangConfig.getString("lpsActionBarToggle").replace("{LP_Toggle_Value}", String.valueOf(UsersConfig.getBoolean(player.getName() + ".ActionBar")))));
 
                 }
                 if (args[0].equalsIgnoreCase("bp")) {
@@ -219,7 +215,8 @@ public class LevelPoints  implements CommandExecutor {
                 if(args[0].equalsIgnoreCase("top")) {
                     posTop = 0;
 
-                    ConfigurationSection cf = lp.getPlayersConfig().getConfigurationSection("");
+
+                    ConfigurationSection cf = lp.TopListConfig.getConfigurationSection("");
                     cf.getValues(false)
                             .entrySet()
                             .stream()
@@ -273,24 +270,6 @@ public class LevelPoints  implements CommandExecutor {
                 sender.sendMessage(ChatColor.DARK_AQUA + "LevelPoints Created by: " + ChatColor.AQUA + "Zoon20X");
             }
 
-            if (args[0].equalsIgnoreCase("start")) {
-
-                seconds = 65;
-                if (seconds >= 60) {
-                    minutes = seconds / 60;
-                    seconds = seconds - (minutes * 60);
-                }
-                if (minutes >= 60) {
-                    hours = minutes / 60;
-                    minutes = minutes - (hours * 60);
-                }
-
-                player.sendMessage(ChatColor.RED + "Start Timer");
-                player.sendMessage(ChatColor.GREEN + "Hours: " + hours);
-                player.sendMessage(ChatColor.GREEN + "Minutes: " + minutes);
-                player.sendMessage(ChatColor.GREEN + "Seconds: " + seconds);
-                doCountDown();
-            }
 
 
             if (sender.hasPermission("lp.player")) {
@@ -298,14 +277,16 @@ public class LevelPoints  implements CommandExecutor {
                 if (args[0].equalsIgnoreCase("info")) {
                     String levels;
                     if (args.length == 1) {
-                        levels = lp.getPlayersConfig().getString(player.getName() + ".level");
-                        int pres = lp.getPlayersConfig().getInt(player.getName() + ".Prestige");
-                        int nlevel = lp.getPlayersConfig().getInt(player.getName() + ".level");
-                        int expss = lp.getPlayersConfig().getInt(player.getName() + ".EXP.Amount");
+
+
+                        levels = UsersConfig.getString(player.getName() + ".level");
+                        int pres = UsersConfig.getInt(player.getName() + ".Prestige");
+                        int nlevel = UsersConfig.getInt(player.getName() + ".level");
+                        int expss = UsersConfig.getInt(player.getName() + ".EXP.Amount");
 
 
                         if(lp.LevelConfig.getBoolean("PrestigeLeveling")){
-                            needep = lp.LevelConfig.getInt("Prestige-" + lp.getPlayersConfig().getInt(player.getName() + ".Prestige") + ".Level-" + lp.getPlayersConfig().getInt(player.getName() + ".level"));
+                            needep = lp.LevelConfig.getInt("Prestige-" + UsersConfig.getInt(player.getName() + ".Prestige") + ".Level-" + UsersConfig.getInt(player.getName() + ".level"));
                         }else if(lp.LevelConfig.getBoolean("CustomLeveling")){
                             needep = lp.LevelConfig.getInt("Level-" + nlevel);
                         }else{
@@ -316,16 +297,16 @@ public class LevelPoints  implements CommandExecutor {
                         String EXP = Integer.toString(expss) + "/" + Integer.toString(needep);
                         String Percentage = Math.round(percentage/needep) + "%";
 
-                       // player.sendMessage(API.format(Lang.getString("lpinfoName").replace("{lp_player}", player.getName())));
+                        // player.sendMessage(API.format(Lang.getString("lpinfoName").replace("{lp_player}", player.getName())));
                         //player.sendMessage(ChatColor.AQUA + " ");
                         //player.sendMessage(API.format(Lang.getString("lpinfoLevel").replace("{lp_level}", levels)));
                         //player.sendMessage(API.format(Lang.getString("lpinfoEXP").replace("{lp_xp}", EXP)));
-                       // player.sendMessage(API.format(Lang.getString("lpinfoEXPProgress").replace("{lp_xp_required}", Percentage)));
-                       // player.sendMessage(ChatColor.DARK_GREEN + "");
-                       // player.sendMessage(API.format(Lang.getString("lpinfoPrestige").replace("{lp_prestige}", Integer.toString(pres))));
+                        // player.sendMessage(API.format(Lang.getString("lpinfoEXPProgress").replace("{lp_xp_required}", Percentage)));
+                        // player.sendMessage(ChatColor.DARK_GREEN + "");
+                        // player.sendMessage(API.format(Lang.getString("lpinfoPrestige").replace("{lp_prestige}", Integer.toString(pres))));
 
                         for(String x : lp.LangConfig.getStringList("lpsInfo")) {
-                         sender.sendMessage(API.format(x.replace("{lp_player}", player.getName()).replace("{lp_level}", levels).replace("{lp_xp}", EXP).replace("{lp_progress}", Percentage).replace("{lp_prestige}", Integer.toString(pres))));
+                            sender.sendMessage(API.format(x.replace("{lp_player}", player.getName()).replace("{lp_level}", levels).replace("{lp_xp}", EXP).replace("{lp_progress}", Percentage).replace("{lp_prestige}", Integer.toString(pres))));
                         }
                         return true;
                     }
@@ -335,13 +316,13 @@ public class LevelPoints  implements CommandExecutor {
                     for (int i = 2; i < args.length; i++) {
                         str.append(' ').append(args[i]);
                     }
-                    levels = lp.getPlayersConfig().getString(str.toString() + ".level");
-                    int pres = lp.getPlayersConfig().getInt(str.toString() + ".Prestige");
-                    int nlevel = lp.getPlayersConfig().getInt(str.toString() + ".level");
-                    int expss = lp.getPlayersConfig().getInt(str.toString() + ".EXP.Amount");
+                    levels = UsersConfig.getString(str.toString() + ".level");
+                    int pres = UsersConfig.getInt(str.toString() + ".Prestige");
+                    int nlevel = UsersConfig.getInt(str.toString() + ".level");
+                    int expss = UsersConfig.getInt(str.toString() + ".EXP.Amount");
 
                     if(lp.LevelConfig.getBoolean("PrestigeLeveling")){
-                        needep = lp.LevelConfig.getInt("Prestige-" + lp.getPlayersConfig().getInt(str.toString() + ".Prestige") + ".Level-" + lp.getPlayersConfig().getInt(str.toString() + ".level"));
+                        needep = lp.LevelConfig.getInt("Prestige-" + UsersConfig.getInt(str.toString() + ".Prestige") + ".Level-" + UsersConfig.getInt(str.toString() + ".level"));
                     }else if(lp.LevelConfig.getBoolean("CustomLeveling")){
                         needep = lp.LevelConfig.getInt("Level-" + nlevel);
                     }else{
@@ -362,19 +343,19 @@ public class LevelPoints  implements CommandExecutor {
             }
             if(args[0].equalsIgnoreCase("prestige")) {
                 if (lp.LevelConfig.getBoolean("Prestige")) {
-                    if (lp.getPlayersConfig().getInt(playerName + ".level") == lp.LevelConfig.getInt("MaxLevel")) {
+                    if (UsersConfig.getInt(playerName + ".level") == lp.LevelConfig.getInt("MaxLevel")) {
                         int CustomMaxEXP = lp.getConfig().getInt("Level-" + lp.LevelConfig.getInt("MaxLevel"));
-                        int PrestigeMaxEXP = lp.LevelConfig.getInt("Prestige-" + lp.getPlayersConfig().getInt(player.getName() + ".Prestige") + ".Level-" + lp.LevelConfig.getInt("MaxLevel"));
+                        int PrestigeMaxEXP = lp.LevelConfig.getInt("Prestige-" + UsersConfig.getInt(player.getName() + ".Prestige") + ".Level-" + lp.LevelConfig.getInt("MaxLevel"));
                         if (lp.LevelConfig.getBoolean("PrestigeLeveling")) {
-                            if (lp.getPlayersConfig().getInt(playerName + ".EXP.Amount") >= PrestigeMaxEXP) {
+                            if (UsersConfig.getInt(playerName + ".EXP.Amount") >= PrestigeMaxEXP) {
                                 if (args[0].equalsIgnoreCase("prestige")) {
                                     sender.sendMessage(ChatColor.DARK_AQUA + "You Prestiged");
-                                    lp.getPlayersConfig().set(playerName + ".level", 1);
-                                    lp.getPlayersConfig().set(playerName + ".Prestige", lp.getPlayersConfig().getInt(player.getName() + ".Prestige") + 1);
-                                    lp.getPlayersConfig().set(playerName + ".EXP.Amount", 0);
+                                    UsersConfig.set(playerName + ".level", 1);
+                                    UsersConfig.set(playerName + ".Prestige", UsersConfig.getInt(player.getName() + ".Prestige") + 1);
+                                    UsersConfig.set(playerName + ".EXP.Amount", 0);
 
                                     try {
-                                        lp.getPlayersConfig().save(lp.getPlayersFile());
+                                        UsersConfig.save(userdata);
                                     } catch (IOException e) {
                                         e.printStackTrace();
                                     }
@@ -383,15 +364,15 @@ public class LevelPoints  implements CommandExecutor {
                             }
                         } else if (lp.LevelConfig.getBoolean("CustomLeveling")) {
 
-                            if (lp.getPlayersConfig().getInt(playerName + ".EXP.Amount") >= CustomMaxEXP) {
+                            if (UsersConfig.getInt(playerName + ".EXP.Amount") >= CustomMaxEXP) {
                                 if (args[0].equalsIgnoreCase("prestige")) {
                                     sender.sendMessage(ChatColor.DARK_AQUA + "You Prestiged");
-                                    lp.getPlayersConfig().set(playerName + ".level", 1);
-                                    lp.getPlayersConfig().set(playerName + ".Prestige", 1);
-                                    lp.getPlayersConfig().set(playerName + ".EXP.Amount", 0);
+                                    UsersConfig.set(playerName + ".level", 1);
+                                    UsersConfig.set(playerName + ".Prestige", 1);
+                                    UsersConfig.set(playerName + ".EXP.Amount", 0);
 
                                     try {
-                                        lp.getPlayersConfig().save(lp.getPlayersFile());
+                                        UsersConfig.save(userdata);
                                     } catch (IOException e) {
                                         e.printStackTrace();
                                     }
@@ -399,15 +380,15 @@ public class LevelPoints  implements CommandExecutor {
                                 }
                             }
                         } else {
-                            if (lp.getPlayersConfig().getInt(playerName + ".EXP.Amount") >= (lp.getConfig().getInt("LevelingEXP") * lp.getConfig().getInt("MaxLevel"))) {
+                            if (UsersConfig.getInt(playerName + ".EXP.Amount") >= (lp.getConfig().getInt("LevelingEXP") * lp.getConfig().getInt("MaxLevel"))) {
                                 if (args[0].equalsIgnoreCase("prestige")) {
                                     sender.sendMessage(ChatColor.DARK_AQUA + "You Prestiged");
-                                    lp.getPlayersConfig().set(playerName + ".level", 1);
-                                    lp.getPlayersConfig().set(playerName + ".Prestige", 1);
-                                    lp.getPlayersConfig().set(playerName + ".EXP.Amount", 0);
+                                    UsersConfig.set(playerName + ".level", 1);
+                                    UsersConfig.set(playerName + ".Prestige", 1);
+                                    UsersConfig.set(playerName + ".EXP.Amount", 0);
 
                                     try {
-                                        lp.getPlayersConfig().save(lp.getPlayersFile());
+                                        UsersConfig.save(userdata);
                                     } catch (IOException e) {
                                         e.printStackTrace();
                                     }
@@ -436,11 +417,13 @@ public class LevelPoints  implements CommandExecutor {
                 }
                 Player target = Bukkit.getPlayer(args[1]);
 
+
                 if (target != null) {
                     try {
                         lp.CustomXP(target, Integer.parseInt(args[2]),0);
                         sender.sendMessage(API.format(lp.LangConfig.getString("lpAdminEXPGive").replace("{LP_TARGET}", target.getName()).replace("{EXP_AMOUNT}", args[2])));
                         target.sendMessage(API.format(lp.LangConfig.getString("lpEXPGive").replace("{EXP_Amount}", args[2]).replace("{LP_USER}", lp.LangConfig.getString("lpServerName"))));
+
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -458,14 +441,16 @@ public class LevelPoints  implements CommandExecutor {
                     return true;
                 }
                 Player target = Bukkit.getPlayer(args[1]);
+                File userdata = new File(lp.userFolder, target.getUniqueId() + ".yml");
+                FileConfiguration UsersConfig = YamlConfiguration.loadConfiguration(userdata);
 
                 if (target != null) {
-                    int expp = lp.getPlayersConfig().getInt(target.getName() + ".EXP.Amount");
+                    int expp = UsersConfig.getInt(target.getName() + ".EXP.Amount");
                     int t = Integer.parseInt(args[2]);
                     int tep = expp - t;
-                    lp.getPlayersConfig().set(target.getName() + ".EXP.Amount", tep);
+                    UsersConfig.set(target.getName() + ".EXP.Amount", tep);
                     try {
-                        lp.getPlayersConfig().save(lp.getPlayersFile());
+                        UsersConfig.save(userdata);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

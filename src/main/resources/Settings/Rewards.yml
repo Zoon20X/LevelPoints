@@ -36,6 +36,16 @@ Type: 'REGULAR'
 # Type: 'REGULAR'
 # for this you would just do the - below each level
 
+#example FILEChance
+# CAUTION When changing to this reward type server MUST BE RESTARTED or it will throw errors you MUST restart
+# Type: FILECHANCE'
+# LevelChance:
+#       - 1
+#       - 5
+#       - 10
+#
+#
+#
 Rewards:
   #Example
   # - give %player% diamond 1

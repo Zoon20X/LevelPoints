@@ -3,6 +3,8 @@ package levelpoints.Events;
 import levelpoints.lp.LP;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -13,8 +15,8 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.scheduler.BukkitRunnable;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.UUID;
@@ -53,34 +55,11 @@ public class customInventory implements Listener {
     public customInventory() {
 
     }
-
-    public void doCountDown(Player player) throws IOException {
-        if (pnum > 0) {
-            pnum -= 1;
-            //player.sendMessage("hi");
-            lp.getPlayersConfig().set(player.getName() + ".EXP.Gen", pnum);
-            lp.getPlayersConfig().save(lp.getPlayersFile());
-            new BukkitRunnable() {
-                @Override
-                public void run() {
-                    try {
-                        doCountDown(player);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }.runTaskLater(lp, 20);
-        } else if (pnum == 0) {
-            try {
-                lp.getPlayersConfig().set(player.getName() + ".EXP.Active", 1);
-                lp.getPlayersConfig().save(lp.getPlayersFile());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
+    
 
     public void boosterInventory(Player player) {
+        File userdata = new File(lp.userFolder, player.getUniqueId() + ".yml");
+        FileConfiguration UsersConfig = YamlConfiguration.loadConfiguration(userdata);
 
         ii2 = lp.getBoosterConfig().getItemStack("Boosters.2");
         ii3 = lp.getBoosterConfig().getItemStack("Boosters.3");
@@ -93,66 +72,66 @@ public class customInventory implements Listener {
         ii10 = lp.getBoosterConfig().getItemStack("Boosters.10");
 
         if(!(ii2 == null)) {
-            if(lp.getPlayersConfig().getInt(player.getName() + ".EXP.Boost2x") == 0){
+            if(UsersConfig.getInt(player.getName() + ".EXP.Boost2x") == 0){
                 ii2.setAmount(1);
             }else {
-                ii2.setAmount(lp.getPlayersConfig().getInt(player.getName() + ".EXP.Boost2x"));
+                ii2.setAmount(UsersConfig.getInt(player.getName() + ".EXP.Boost2x"));
             }
        }
         if(!(ii3 == null)) {
-            if (lp.getPlayersConfig().getInt(player.getName() + ".EXP.Boost3x") == 0) {
+            if (UsersConfig.getInt(player.getName() + ".EXP.Boost3x") == 0) {
                 ii3.setAmount(1);
             } else {
-                ii3.setAmount(lp.getPlayersConfig().getInt(player.getName() + ".EXP.Boost3x"));
+                ii3.setAmount(UsersConfig.getInt(player.getName() + ".EXP.Boost3x"));
             }
         }
         if(!(ii4 == null)) {
-            if (lp.getPlayersConfig().getInt(player.getName() + ".EXP.Boost4x") == 0) {
+            if (UsersConfig.getInt(player.getName() + ".EXP.Boost4x") == 0) {
                 ii4.setAmount(1);
             } else {
-                ii4.setAmount(lp.getPlayersConfig().getInt(player.getName() + ".EXP.Boost4x"));
+                ii4.setAmount(UsersConfig.getInt(player.getName() + ".EXP.Boost4x"));
             }
         }
         if(!(ii5 == null)) {
-            if (lp.getPlayersConfig().getInt(player.getName() + ".EXP.Boost5x") == 0) {
+            if (UsersConfig.getInt(player.getName() + ".EXP.Boost5x") == 0) {
                 ii5.setAmount(1);
             } else {
-                ii5.setAmount(lp.getPlayersConfig().getInt(player.getName() + ".EXP.Boost5x"));
+                ii5.setAmount(UsersConfig.getInt(player.getName() + ".EXP.Boost5x"));
             }
         }
         if(!(ii6 == null)) {
-            if (lp.getPlayersConfig().getInt(player.getName() + ".EXP.Boost6x") == 0) {
+            if (UsersConfig.getInt(player.getName() + ".EXP.Boost6x") == 0) {
                 ii6.setAmount(1);
             } else {
-                ii6.setAmount(lp.getPlayersConfig().getInt(player.getName() + ".EXP.Boost6x"));
+                ii6.setAmount(UsersConfig.getInt(player.getName() + ".EXP.Boost6x"));
             }
         }
         if(!(ii7 == null)) {
-            if (lp.getPlayersConfig().getInt(player.getName() + ".EXP.Boost7x") == 0) {
+            if (UsersConfig.getInt(player.getName() + ".EXP.Boost7x") == 0) {
                 ii7.setAmount(1);
             } else {
-                ii7.setAmount(lp.getPlayersConfig().getInt(player.getName() + ".EXP.Boost7x"));
+                ii7.setAmount(UsersConfig.getInt(player.getName() + ".EXP.Boost7x"));
             }
         }
         if(!(ii8 == null)) {
-            if (lp.getPlayersConfig().getInt(player.getName() + ".EXP.Boost8x") == 0) {
+            if (UsersConfig.getInt(player.getName() + ".EXP.Boost8x") == 0) {
                 ii8.setAmount(1);
             } else {
-                ii8.setAmount(lp.getPlayersConfig().getInt(player.getName() + ".EXP.Boost8x"));
+                ii8.setAmount(UsersConfig.getInt(player.getName() + ".EXP.Boost8x"));
             }
         }
         if(!(ii9 == null)) {
-            if (lp.getPlayersConfig().getInt(player.getName() + ".EXP.Boost9x") == 0) {
+            if (UsersConfig.getInt(player.getName() + ".EXP.Boost9x") == 0) {
                 ii9.setAmount(1);
             } else {
-                ii9.setAmount(lp.getPlayersConfig().getInt(player.getName() + ".EXP.Boost9x"));
+                ii9.setAmount(UsersConfig.getInt(player.getName() + ".EXP.Boost9x"));
             }
         }
         if(!(ii10 == null)) {
-            if (lp.getPlayersConfig().getInt(player.getName() + ".EXP.Boost10x") == 0) {
+            if (UsersConfig.getInt(player.getName() + ".EXP.Boost10x") == 0) {
                 ii10.setAmount(1);
             } else {
-                ii10.setAmount(lp.getPlayersConfig().getInt(player.getName() + ".EXP.Boost10x"));
+                ii10.setAmount(UsersConfig.getInt(player.getName() + ".EXP.Boost10x"));
             }
         }
 
@@ -223,6 +202,9 @@ public class customInventory implements Listener {
 
 
     public void boosteruseclick(Player player, int multiplier) throws IOException {
+
+        File userdata = new File(lp.userFolder, player.getUniqueId() + ".yml");
+        FileConfiguration UsersConfig = YamlConfiguration.loadConfiguration(userdata);
         cooldowntimer = lp.getConfig().getInt("BoostersTime");
 
         if (cooldown.containsKey(player.getUniqueId())) {
@@ -245,13 +227,13 @@ public class customInventory implements Listener {
                 }
                 player.sendMessage(ChatColor.AQUA + "Time: " + frostday + ".days" + frosthour + ".hours " + frostmin + ".minutes " + frostsec + ".seconds");
             } else {
-                if (lp.getPlayersConfig().getInt(player.getName() + ".EXP.Boost" + multiplier + "x") >= 1) {
-                    int numm = lp.getPlayersConfig().getInt(player.getName() + ".EXP.Boost" + multiplier + "x");
-                    lp.getPlayersConfig().set(player.getName() + ".EXP.Boost" + multiplier + "x", numm - 1);
-                    lp.getPlayersConfig().set(player.getName() + ".EXP.Active", multiplier);
+                if (UsersConfig.getInt(player.getName() + ".EXP.Boost" + multiplier + "x") >= 1) {
+                    int numm = UsersConfig.getInt(player.getName() + ".EXP.Boost" + multiplier + "x");
+                    UsersConfig.set(player.getName() + ".EXP.Boost" + multiplier + "x", numm - 1);
+                    UsersConfig.set(player.getName() + ".EXP.Active", multiplier);
                     player.closeInventory();
 
-                    lp.getPlayersConfig().save(lp.getPlayersFile());
+                    UsersConfig.save(userdata);
                     cooldown.put(player.getUniqueId(), System.currentTimeMillis());
                     player.sendMessage(ChatColor.GREEN + "Booster Has Been Activated");
                 } else {
@@ -260,13 +242,13 @@ public class customInventory implements Listener {
                 }
             }
         } else {
-            if (lp.getPlayersConfig().getInt(player.getName() + ".EXP.Boost" + multiplier + "x") >= 1) {
-                int numm = lp.getPlayersConfig().getInt(player.getName() + ".EXP.Boost" + multiplier + "x");
-                lp.getPlayersConfig().set(player.getName() + ".EXP.Boost" + multiplier + "x", numm - 1);
-                lp.getPlayersConfig().set(player.getName() + ".EXP.Active", multiplier);
+            if (UsersConfig.getInt(player.getName() + ".EXP.Boost" + multiplier + "x") >= 1) {
+                int numm = UsersConfig.getInt(player.getName() + ".EXP.Boost" + multiplier + "x");
+                UsersConfig.set(player.getName() + ".EXP.Boost" + multiplier + "x", numm - 1);
+                UsersConfig.set(player.getName() + ".EXP.Active", multiplier);
                 player.closeInventory();
 
-                lp.getPlayersConfig().save(lp.getPlayersFile());
+                UsersConfig.save(userdata);
                 cooldown.put(player.getUniqueId(), System.currentTimeMillis());
                 player.sendMessage(ChatColor.GREEN + "Booster Has Been Activated");
             } else {
@@ -327,6 +309,8 @@ public class customInventory implements Listener {
     @EventHandler
     public void onJoin(PlayerMoveEvent event) throws IOException {
         Player player = event.getPlayer();
+        File userdata = new File(lp.userFolder, player.getUniqueId() + ".yml");
+        FileConfiguration UsersConfig = YamlConfiguration.loadConfiguration(userdata);
 
         cooldowntimer = lp.getConfig().getInt("BoostersTime");
         if (cooldown.containsKey(player.getUniqueId())) {
@@ -334,9 +318,9 @@ public class customInventory implements Listener {
             if (secondsleft > 0) {
                 return;
             } else {
-                if(lp.getPlayersConfig().getInt(player.getName() + ".EXP.Active") != 1) {
-                    lp.getPlayersConfig().set(player.getName() + ".EXP.Active", 1);
-                    lp.getPlayersConfig().save(lp.getPlayersFile());
+                if(UsersConfig.getInt(player.getName() + ".EXP.Active") != 1) {
+                    UsersConfig.set(player.getName() + ".EXP.Active", 1);
+                    UsersConfig.save(userdata);
                 }
             }
         }else{

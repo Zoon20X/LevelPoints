@@ -1,12 +1,14 @@
 package levelpoints.lp;
 
 import org.bukkit.ChatColor;
-import org.bukkit.entity.Player;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
 import org.bukkit.plugin.Plugin;
 
+import java.io.File;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,12 +24,11 @@ public class mySQL implements Listener {
 
 
     @EventHandler
-    public void onJoin(PlayerJoinEvent event){
-        Player player = event.getPlayer();
+    public void onJoin(AsyncPlayerPreLoginEvent event){
+
         createTable();
-        createPlayer(player.getUniqueId(), player);
-        lp.getEXP(player.getUniqueId(), player);
-        lp.getLevel(player.getUniqueId(), player);
+        createPlayer(event.getUniqueId(), event.getName());
+
 
     }
     public boolean playerExists(UUID uuid){
@@ -36,7 +37,6 @@ public class mySQL implements Listener {
             statement.setString(1, uuid.toString());
             ResultSet results = statement.executeQuery();
             if(results.next()){
-                plugin.getServer().getConsoleSender().sendMessage(ChatColor.DARK_AQUA + "Player Found");
                 return true;
             }
             plugin.getServer().getConsoleSender().sendMessage(ChatColor.DARK_RED + "Player Not Found");
@@ -47,8 +47,9 @@ public class mySQL implements Listener {
         return false;
     }
 
-    public void createPlayer(final UUID uuid, Player player){
-        lp.getServer().getConsoleSender().sendMessage(ChatColor.DARK_AQUA + "1");
+    public void createPlayer(final UUID uuid, String name){
+        File userdata = new File(lp.userFolder, uuid + ".yml");
+        FileConfiguration UsersConfig = YamlConfiguration.loadConfiguration(userdata);
         try{
             PreparedStatement statement = lp.getConnection().prepareStatement("SELECT * FROM " + lp.table + " WHERE UUID=?");
             statement.setString(1, uuid.toString());
@@ -57,10 +58,10 @@ public class mySQL implements Listener {
             if(playerExists(uuid) != true){
                 PreparedStatement insert = lp.getConnection().prepareStatement("INSERT INTO " + lp.table + " (UUID,NAME,LEVEL,EXP,PRESTIGE) VALUE (?,?,?,?,?)");
                 insert.setString(1, uuid.toString());
-                insert.setString(2, player.getName());
-                insert.setString(3, String.valueOf(lp.getPlayersConfig().getInt(player.getName() + ".level")));
-                insert.setString(4, String.valueOf(lp.getPlayersConfig().getInt(player.getName() + ".EXP.Amount")));
-                insert.setString(5, String.valueOf(lp.getPlayersConfig().getInt(player.getName() + ".Prestige")));
+                insert.setString(2, name);
+                insert.setString(3, String.valueOf(UsersConfig.getInt(name + ".level")));
+                insert.setString(4, String.valueOf(UsersConfig.getInt(name + ".EXP.Amount")));
+                insert.setString(5, String.valueOf(UsersConfig.getInt(name + ".Prestige")));
                 insert.executeUpdate();
 
                 lp.getServer().getConsoleSender().sendMessage(ChatColor.DARK_AQUA + "Player Added to Database");

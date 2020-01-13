@@ -34,9 +34,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.songoda:3.8.0" level="project" />
     <orderEntry type="library" name="WildStackerAPI" level="project" />
-    <orderEntry type="library" name="CMIAPI7.6.2.01" level="project" />
     <orderEntry type="library" name="NametagEdit1" level="project" />
-    <orderEntry type="library" name="TitleAPI-1.7.71" level="project" />
     <orderEntry type="library" name="EpicSpawners-6-Pre-release-4" level="project" />
     <orderEntry type="library" name="LPSAPI" level="project" />
     <orderEntry type="library" name="BossBarAPI" level="project" />

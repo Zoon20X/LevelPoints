@@ -1,8 +1,8 @@
 package levelpoints.Events;
 
-import com.connorlinfoot.titleapi.TitleAPI;
 import levelpoints.lp.LP;
 import org.bukkit.ChatColor;
+import org.bukkit.Sound;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Animals;
@@ -43,23 +43,32 @@ public class killEvent implements Listener {
 
     @EventHandler
     public void onDamage(EntityDamageByEntityEvent event) {
-        if (lp.LevelConfig.getBoolean("PvpLeveluse")) {
-            int levelpvp = lp.LevelConfig.getInt("PvpLevel");
+
+        if (lp.EXPConfig.getBoolean("PvpLeveluse")) {
+            int levelpvp = lp.EXPConfig.getInt("PvpLevel");
             if (!(event.getDamager() instanceof Player)) {
                 return;
             } else {
                 if (event.getEntity() instanceof Player) {
                     Player Attacker = (Player) event.getDamager();
                     Player player = (Player) event.getEntity();
-                    if ((lp.getPlayersConfig().getInt(player.getName() + ".level") < levelpvp)) {
+
+                    File playerData = new File(lp.userFolder, player.getUniqueId() + ".yml");
+                    File attackerdata = new File(lp.userFolder, Attacker.getUniqueId() + ".yml");
+                    FileConfiguration PlayerConfig = YamlConfiguration.loadConfiguration(playerData);
+                    FileConfiguration AttackerConfig = YamlConfiguration.loadConfiguration(attackerdata);
+
+                    if ((PlayerConfig.getInt(player.getName() + ".level") < levelpvp)) {
                         event.setCancelled(true);
-                        TitleAPI.sendTitle(player, 20, 50, 20, ChatColor.DARK_RED + "You Must BE", ChatColor.RED + "Level "+levelpvp+" to PVP");
-                        Attacker.sendMessage(ChatColor.RED + player.getName() + " Must to Level "+levelpvp+" to allow pvp");
+                        lp.Title(player,  ChatColor.DARK_RED + "You Must BE", ChatColor.RED + "Level 5 to PVP");
+                        Attacker.sendMessage(ChatColor.RED + player.getName() + " Must to Level 5 to allow pvp");
+                        Attacker.playSound(Attacker.getLocation(), Sound.ENTITY_ENDERDRAGON_GROWL, 10F, 15);
                     }
-                    if ((lp.getPlayersConfig().getInt(Attacker.getName() + ".level") < levelpvp)) {
+                    if ((AttackerConfig.getInt(Attacker.getName() + ".level") < levelpvp)) {
                         event.setCancelled(true);
-                        TitleAPI.sendTitle(Attacker, 20, 50, 20, ChatColor.DARK_RED + "You Must BE", ChatColor.RED + "Level "+ levelpvp +" to PVP");
+                        lp.Title(Attacker,ChatColor.DARK_RED + "You Must BE", ChatColor.RED + "Level 5 to PVP");
                         //player.sendMessage(ChatColor.RED + Attacker.getName() + " Must to Level 5 to allow pvp");
+                        player.playSound(player.getLocation(), Sound.ENTITY_ENDERDRAGON_GROWL, 10F, 15);
                     }
                 } else {
                     return;
@@ -71,10 +80,16 @@ public class killEvent implements Listener {
 
                 Player Attacker = (Player) arrow.getShooter();
                 Player player = (Player) event.getEntity();
-                if ((lp.getPlayersConfig().getInt(player.getName() + ".level") < levelpvp)) {
+                File playerData = new File(lp.userFolder, player.getUniqueId() + ".yml");
+                File attackerdata = new File(lp.userFolder, Attacker.getUniqueId() + ".yml");
+                FileConfiguration PlayerConfig = YamlConfiguration.loadConfiguration(playerData);
+                FileConfiguration AttackerConfig = YamlConfiguration.loadConfiguration(attackerdata);
+
+                if ((PlayerConfig.getInt(player.getName() + ".level") < levelpvp)) {
                     event.setCancelled(true);
-                    TitleAPI.sendTitle(player, 20, 50, 20, ChatColor.DARK_RED + "You Must BE", ChatColor.RED + "Level "+levelpvp+" to PVP");
-                    Attacker.sendMessage(ChatColor.RED + player.getName() + " Must to Level "+levelpvp+" to allow pvp");
+                    lp.Title(player,  ChatColor.DARK_RED + "You Must BE", ChatColor.RED + "Level 5 to PVP");
+                    Attacker.sendMessage(ChatColor.RED + player.getName() + " Must to Level 5 to allow pvp");
+                    Attacker.playSound(Attacker.getLocation(), Sound.ENTITY_ENDERDRAGON_GROWL, 10F, 15);
                 }
             }
         }
@@ -87,15 +102,20 @@ public class killEvent implements Listener {
 
         Player Killer = d.getEntity().getKiller();
         if (Killer instanceof Player) {
+
+            File userdata = new File(lp.userFolder,  player.getUniqueId() + ".yml");
+            File killerData = new File(lp.userFolder,  Killer.getUniqueId() + ".yml");
+            FileConfiguration UsersConfig = YamlConfiguration.loadConfiguration(userdata);
+            FileConfiguration KillerConfig = YamlConfiguration.loadConfiguration(userdata);
             if (lp.EXPConfig.getBoolean("Exp-Kill-players")) {
                 lp.CustomXP(Killer, lp.EXPConfig.getInt("Kill-Player-Amount"), 0);
                 if (lp.EXPConfig.getBoolean("EXP-Lost-On-Death-Player")) {
-                    int expp = lp.getPlayersConfig().getInt(player.getName() + ".EXP.Amount");
+                    int expp = UsersConfig.getInt(player.getName() + ".EXP.Amount");
                     int t = lp.EXPConfig.getInt("EXP-Lost-Amount");
                     if (t <= expp) {
                         int tep = expp - t;
-                        lp.getPlayersConfig().set(player.getName() + ".EXP.Amount", tep);
-                        lp.getPlayersConfig().save(lp.getPlayersFile());
+                        UsersConfig.set(player.getName() + ".EXP.Amount", tep);
+                        UsersConfig.save(userdata);
                     }
                 }
             }
@@ -110,15 +130,19 @@ public class killEvent implements Listener {
             Monster monsterEnt = (Monster) event.getEntity();
             Object mcPlayer = monsterEnt.getKiller();
             Player player = ((Player) mcPlayer);
-            if (lp.EXPConfig.getBoolean("Debug")) {
-                player.sendMessage(monsterEnt.getType().toString());
+            if (mcPlayer == null) {
+                return;
+            }else {
+                if (lp.EXPConfig.getBoolean("Debug")) {
+                    player.sendMessage(monsterEnt.getType().toString());
+                }
             }
 
             if (lp.EXPConfig.getBoolean("PerWorld")) {
-
                 List<String> worlds = lp.EXPConfig.getStringList("Worlds");
-                for (String world : worlds)
+                for (String world : worlds) {
                     if (player.getLocation().getWorld().getName().equalsIgnoreCase(world)) {
+
                         if (mcPlayer == null)
                             return;
 
@@ -137,6 +161,7 @@ public class killEvent implements Listener {
                             }
                         }
                     }
+                }
             } else {
                 if (mcPlayer == null)
                     return;
@@ -162,9 +187,12 @@ public class killEvent implements Listener {
                 Animals ani = (Animals) event.getEntity();
                 Object mcplayer = ani.getKiller();
                 Player player = (Player) mcplayer;
-
-                if (lp.EXPConfig.getBoolean("Debug")) {
-                    player.sendMessage(ani.getType().toString());
+                if (mcplayer == null) {
+                    return;
+                }else {
+                    if (lp.EXPConfig.getBoolean("Debug")) {
+                        player.sendMessage(ani.getType().toString());
+                    }
                 }
 
 
@@ -211,4 +239,5 @@ public class killEvent implements Listener {
             }
         }
     }
+
 }
