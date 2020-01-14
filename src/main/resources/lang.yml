@@ -50,3 +50,5 @@ lpTimedReward: '&2You Just Received &6{EXP_Timed_Amount} &2next amount will be i
 lpEXPGive: '&2You Just Received &6{EXP_Amount} &2from &6{LP_USER}' #Warning if you are using the EXP give command through the console DO NOT place THE, as (LP_USER) will auto correct to lpServerName anyway
 lpServerName: 'SERVER' #use this for when you are sending EXPGIVE command through console: DO NOT USE COLOR CODES THEY WILL NOT SHOW
 lpAdminEXPGive: '&2You Just Gave &6{LP_TARGET} &2EXP: &6{EXP_AMOUNT}' #This Will Send the The User that Uses The EXPGIVE Command
+
+EXPEarn: '&2You just earned &6{EXP_Amount} &2for &6{Earn_Task}'

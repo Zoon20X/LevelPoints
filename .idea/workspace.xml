@@ -6,47 +6,20 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7510956-6c72-465e-9e6b-1e334f122a6b" name="Default Changelist" comment="Updated to the latest hotfix">
-      <change afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Settings/FileChance.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Settings/Formats.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/TopList.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/CMIAPI7_6_2_01.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/TitleAPI_1_7_71.xml" beforeDir="false" />
+    <list default="true" id="d7510956-6c72-465e-9e6b-1e334f122a6b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/levelpoints/Events/FarmEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LevelPoints.iml" beforeDir="false" afterPath="$PROJECT_DIR$/LevelPoints.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/Events/ChatEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/Events/ChatEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/Events/ItemUse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/Events/ItemUse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/Events/LevelPointsData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/Events/LevelPointsData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/Events/breakEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/Events/breakEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/Events/customInventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/Events/customInventory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/Events/joinEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/Events/joinEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/Events/killEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/Events/killEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/commands/LevelPoints.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/commands/LevelPoints.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/lp/API.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/lp/API.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/lp/LP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/lp/LP.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/lp/mySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/lp/mySQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/otherPluginConnections/EpicSpawners.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/otherPluginConnections/EpicSpawners.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/levelpoints/otherPluginConnections/WildStacker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levelpoints/otherPluginConnections/WildStacker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Settings/EXP.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Settings/EXP.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Settings/Rewards.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Settings/Rewards.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/lang.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lang.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Settings/EXP.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Settings/EXP.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Settings/Rewards.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Settings/Rewards.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/lang.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/lang.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/Events/ChatEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levelpoints/Events/ChatEvent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/Events/ItemUse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levelpoints/Events/ItemUse.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/Events/customInventory$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/Events/customInventory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levelpoints/Events/customInventory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/Events/joinEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levelpoints/Events/joinEvent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/commands/LevelPoints$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/commands/LevelPoints.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levelpoints/commands/LevelPoints.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/lp/LP$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levelpoints/lp/LP$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/lp/LP.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levelpoints/lp/LP.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/lp/mySQL.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levelpoints/lp/mySQL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/otherPluginConnections/EpicSpawners.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levelpoints/otherPluginConnections/EpicSpawners.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/levelpoints/otherPluginConnections/WildStacker.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levelpoints/otherPluginConnections/WildStacker.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plugin.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +85,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553901894017" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../1.14/LevelPoints" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../LevelPointsAPI" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -363,7 +336,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577968967404</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Massive update contains chat formatting fixed sql and changed the way player data is saved">
+      <created>1578881674978</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1578881674978</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -397,38 +377,39 @@
     <MESSAGE value="Changed some code and added a lot of features ready for the next update" />
     <MESSAGE value="fixed issue with /lps top" />
     <MESSAGE value="Updated to the latest hotfix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated to the latest hotfix" />
+    <MESSAGE value="Massive update contains chat formatting fixed sql and changed the way player data is saved" />
+    <option name="LAST_COMMIT_MESSAGE" value="Massive update contains chat formatting fixed sql and changed the way player data is saved" />
   </component>
   <component name="WindowStateProjectService">
     <state x="914" y="468" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1578384543276">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="914" y="468" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1578384543276" />
-    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1578802821641">
+    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1578998772573">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1155" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1576582357880" />
-    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1578802821641" />
-    <state x="351" y="114" key="CommitChangelistDialog2" timestamp="1578534055073">
+    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1578998772573" />
+    <state x="351" y="114" key="CommitChangelistDialog2" timestamp="1578881671170">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1569" y="114" key="CommitChangelistDialog2/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1577968964507" />
-    <state x="351" y="114" key="CommitChangelistDialog2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1578534055073" />
-    <state x="843" y="254" key="FileChooserDialogImpl" timestamp="1578881323278">
+    <state x="351" y="114" key="CommitChangelistDialog2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1578881671170" />
+    <state x="843" y="254" key="FileChooserDialogImpl" timestamp="1578998511269">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="-1077" y="254" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1578442612151" />
-    <state x="843" y="254" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1578881323278" />
+    <state x="-1077" y="254" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1578992471270" />
+    <state x="843" y="254" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1578998511269" />
     <state x="440" y="94" key="SettingsEditor" timestamp="1578804208333">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="771" y="191" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1578443087877" />
     <state x="440" y="94" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1578804208333" />
-    <state x="-1368" y="252" key="Vcs.Push.Dialog.v2" timestamp="1577968970099">
-      <screen x="-1920" y="0" width="1920" height="1040" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1578881676739">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1368" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1577968970099" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1576753523721" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1578881676739" />
     <state x="-1306" y="516" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1577968943590">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
@@ -437,5 +418,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="547" y="302" key="new project wizard/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1578790975081" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1578999628519">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1578999628519" />
   </component>
 </project>

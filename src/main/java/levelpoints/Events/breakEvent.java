@@ -4,16 +4,21 @@ import levelpoints.lp.API;
 import levelpoints.lp.LP;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.player.PlayerFishEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.material.Crops;
+import org.bukkit.material.MaterialData;
 import org.bukkit.plugin.Plugin;
 
 import java.io.File;
@@ -118,6 +123,68 @@ public class breakEvent implements Listener {
                 }
             }
         }
+
+        if(lp.EXPConfig.getBoolean("FarmEXP")){
+
+
+            if(block.getType() == Material.CROPS || block.getType() == Material.CARROT || block.getType() == Material.POTATO || block.getType() == Material.BEETROOT_BLOCK || block.getType() == Material.NETHER_WARTS) {
+                MaterialData FarmData = block.getState().getData();
+
+                Crops crop = new Crops();
+                crop.setData(FarmData.getData());
+
+                if (crop.getData() == (byte) 7 || block.getType() == Material.BEETROOT_BLOCK && crop.getData() == (byte) 3) {
+
+                        ConfigurationSection FarmBlocks = lp.EXPConfig.getConfigurationSection("Farming.");
+
+                        for (ItemStack x : block.getDrops()) {
+
+
+                            if (FarmBlocks.contains(x.getType().toString().replace("_ITEM", ""))) {
+
+                                int amount = lp.EXPConfig.getInt("Farming." + x.getType().toString().replace("_ITEM", ""));
+
+                                lp.FarmEventTrigger(player, x.getType().toString().replace("_ITEM", ""), amount, "Farming");
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+
+    @EventHandler
+    public void fish(PlayerFishEvent event){
+
+        if(event.getState() != PlayerFishEvent.State.CAUGHT_FISH){
+            return;
+        }else{
+            Item item = (Item) event.getCaught();
+
+            ItemStack CaughtItem = item.getItemStack();
+            ItemMeta CaughtMeta = CaughtItem.getItemMeta();
+
+
+        }
+
+    }
+    @EventHandler
+    public void onFarm(FarmEvent event){
+        Player player = event.getPlayer();
+        String Item = event.getFarmedItem();
+
+        int exp = event.getEXPAmount();
+        String task = event.getTask();
+
+
+        try {
+            lp.CustomXP(player, exp, 0);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        player.sendMessage(API.format(lp.LangConfig.getString("EXPEarn").replace("{EXP_Amount}", String.valueOf(exp)).replace("{Earn_Task}", task)));
+
     }
     @EventHandler
     public void place(BlockPlaceEvent event) throws IOException {

@@ -59,7 +59,6 @@ public class ChatEvent implements Listener {
                     String Format = lp.FormatsConfig.getString(key + ".Format");
                     String FormatTags = Format.replace("{level}", levels).replace("{symbol}", symbol).replace("{prestige}", prestigess).replace("{name}", player.getName()).replace("{message}", message).replace("{format}", chat);
                     String Text = PlaceholderAPI.setPlaceholders(player, FormatTags);
-                    String hi = "hi";
 
 
 

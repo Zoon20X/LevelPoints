@@ -791,6 +791,12 @@ public final class LP extends JavaPlugin implements Listener, LevelPointsData {
         }
     }
 
+    @Override
+    public void FarmEventTrigger(Player player, String FarmedItem, int expAmount, String Task) {
+        FarmEvent farmEvent = new FarmEvent(player, FarmedItem, expAmount, Task); // Initialize your Event
+        Bukkit.getPluginManager().callEvent(farmEvent); // This fires the event and allows any listener to listen to the event
+    }
+
     public void PlayerAdd(UUID UUID, String Name) {
         String PlayerFolder = getDataFolder() + "/Players/";
 

@@ -14,4 +14,8 @@ public interface LevelPointsData {
     void ActionBar(Player player, String Message);
     void Title(Player player, String Title, String Subtitle);
 
+    void FarmEventTrigger(Player player, String FarmedItem, int expAmount, String Task);
+
+
+
 }
